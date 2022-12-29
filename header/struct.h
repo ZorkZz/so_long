@@ -1,25 +1,30 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   so_long.h                                          :+:      :+:    :+:   */
+/*   struct.h                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: astachni <astachni@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/12/28 22:46:03 by astachni          #+#    #+#             */
-/*   Updated: 2022/12/29 15:25:12 by astachni         ###   ########.fr       */
+/*   Created: 2022/12/29 15:27:02 by astachni          #+#    #+#             */
+/*   Updated: 2022/12/29 18:05:23 by astachni         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef SO_LONG_H
+#ifndef STRUCT_H
+# define STRUCT_H
 
-# define SO_LONG_H
+typedef struct s_var_env
+{
+	void	*init;
+	void	*win;
+	void	*img;
+}	t_var_env;
 
-# include <mlx.h>
-# include <stddef.h>
-# include "../libs/ft_printf/ft_printf.h"
-# include "struct.h"
-# include "var.h"
-# include "proto.h"
-
+typedef struct s_img_display
+{
+	int		width;
+	int		height;
+	void	*value;
+}	t_img_display;
 
 #endif

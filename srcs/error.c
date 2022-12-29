@@ -1,25 +1,22 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   so_long.h                                          :+:      :+:    :+:   */
+/*   error.c                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: astachni <astachni@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/12/28 22:46:03 by astachni          #+#    #+#             */
-/*   Updated: 2022/12/29 15:25:12 by astachni         ###   ########.fr       */
+/*   Created: 2022/12/28 22:32:20 by astachni          #+#    #+#             */
+/*   Updated: 2022/12/29 18:10:48 by astachni         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef SO_LONG_H
+#include "../header/so_long.h"
 
-# define SO_LONG_H
-
-# include <mlx.h>
-# include <stddef.h>
-# include "../libs/ft_printf/ft_printf.h"
-# include "struct.h"
-# include "var.h"
-# include "proto.h"
-
-
-#endif
+int	error(int code, char *message)
+{
+	if (code == 1)
+	{
+		ft_printf("%s", message);
+		return (-1);
+	}
+}
