@@ -6,7 +6,7 @@
 /*   By: astachni <astachni@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/29 15:27:02 by astachni          #+#    #+#             */
-/*   Updated: 2022/12/29 18:05:23 by astachni         ###   ########.fr       */
+/*   Updated: 2022/12/30 14:33:37 by astachni         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,12 +19,5 @@ typedef struct s_var_env
 	void	*win;
 	void	*img;
 }	t_var_env;
-
-typedef struct s_img_display
-{
-	int		width;
-	int		height;
-	void	*value;
-}	t_img_display;
 
 #endif

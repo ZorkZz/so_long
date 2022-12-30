@@ -6,7 +6,7 @@
 /*   By: astachni <astachni@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/29 15:24:37 by astachni          #+#    #+#             */
-/*   Updated: 2022/12/29 18:52:31 by astachni         ###   ########.fr       */
+/*   Updated: 2022/12/30 14:29:22 by astachni         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,6 +14,6 @@
 # define PROTO_H
 
 int	error(int code, char *message);
-int	close_mlx(int keycode, t_var_env mlx);
+int	close_mlx(t_var_env *mlx);
 
 #endif
