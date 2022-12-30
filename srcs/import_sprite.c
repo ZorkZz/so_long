@@ -1,28 +1,15 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   var.h                                              :+:      :+:    :+:   */
+/*   import_sprite.c                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: astachni <astachni@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/12/29 15:23:11 by astachni          #+#    #+#             */
-/*   Updated: 2022/12/30 15:11:30 by astachni         ###   ########.fr       */
+/*   Created: 2022/12/30 15:12:18 by astachni          #+#    #+#             */
+/*   Updated: 2022/12/30 15:23:57 by astachni         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef VAR_H
-# define VAR_H
+#include "../header/so_long.h"
 
-# ifndef WIN_LENGHT
-#  define WIN_LENGHT 960
-# endif
 
-# ifndef WIN_WIDTH
-#  define WIN_WIDTH 540
-# endif
-
-# ifndef IMG_PATH
-#  define IMG_PATH "../imgs/"
-# endif
-
-#endif
