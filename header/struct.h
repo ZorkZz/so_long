@@ -6,7 +6,7 @@
 /*   By: astachni <astachni@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/29 15:27:02 by astachni          #+#    #+#             */
-/*   Updated: 2022/12/30 14:33:37 by astachni         ###   ########.fr       */
+/*   Updated: 2022/12/30 20:08:50 by astachni         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,7 +17,18 @@ typedef struct s_var_env
 {
 	void	*init;
 	void	*win;
-	void	*img;
 }	t_var_env;
+
+typedef struct s_character
+{
+	void	*path;
+	void	*img_ptr;
+}	t_character;
+
+typedef struct s_img
+{
+	void			*img;
+	struct t_img	*next;
+}	t_img;
 
 #endif

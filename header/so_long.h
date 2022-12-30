@@ -6,7 +6,7 @@
 /*   By: astachni <astachni@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/28 22:46:03 by astachni          #+#    #+#             */
-/*   Updated: 2022/12/30 14:32:21 by astachni         ###   ########.fr       */
+/*   Updated: 2022/12/30 19:50:55 by astachni         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,6 +17,7 @@
 # include <mlx.h>
 # include <stddef.h>
 # include "../libs/ft_printf/ft_printf.h"
+# include "../libs/libft/libft.h"
 # include "struct.h"
 # include "var.h"
 # include "proto.h"

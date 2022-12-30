@@ -4,7 +4,7 @@ SRCS = srcs/main.c srcs/error.c  srcs/close_win.c srcs/event.c srcs/import_sprit
 
 OBJS = $(SRCS:.c=.o)
 
-LIBS = libs/ft_printf/libftprintf.a
+LIBS = libs/ft_printf/libftprintf.a libs/libft/libft.a
 
 CC = cc
 
