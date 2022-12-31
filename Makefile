@@ -1,6 +1,6 @@
 NAME = so_long
 
-SRCS = srcs/main.c srcs/error.c  srcs/close_win.c srcs/event.c srcs/import_sprite.c
+SRCS = srcs/main.c srcs/error.c  srcs/close_win.c srcs/event.c srcs/import_sprite.c srcs/perso_map_characteristics.c srcs/free_all.c
 
 OBJS = $(SRCS:.c=.o)
 
