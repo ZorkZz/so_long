@@ -6,7 +6,7 @@
 /*   By: astachni <astachni@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/31 15:01:20 by astachni          #+#    #+#             */
-/*   Updated: 2022/12/31 15:26:29 by astachni         ###   ########.fr       */
+/*   Updated: 2023/01/02 22:50:35 by astachni         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,7 +23,7 @@
 **
 */
 
-void	*free_all(int value, t_perso *perso, t_img *map)
+void	*free_all(int value, t_perso_env *perso, t_img *map)
 {
 	if (value == 0)
 	{

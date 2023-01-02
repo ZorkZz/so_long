@@ -6,30 +6,29 @@
 /*   By: astachni <astachni@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/30 15:12:18 by astachni          #+#    #+#             */
-/*   Updated: 2022/12/31 14:56:29 by astachni         ###   ########.fr       */
+/*   Updated: 2023/01/02 23:21:39 by astachni         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../header/so_long.h"
-#include <fcntl.h>
 
-void	*import_sprite_charactere(t_var_env *mlx, t_perso *perso)
+void	*import_sprite_charactere(t_perso_env *mlx)
 {
-	perso->size = 64;
+	mlx->size = 64;
 	if (!mlx)
 		return (error(0, "no mlx var"), NULL);
-	if (!perso->path)
+	if (!mlx->path)
 		return (error(1, "no path"), NULL);
-	if (!perso->size)
+	if (!mlx->size)
 		return (error(2, "no size"), NULL);
-	perso->img_ptr = mlx_xpm_file_to_image(mlx->init, perso->path,
-			&perso->size, &perso->size);
-	mlx_put_image_to_window(mlx->init, mlx->win, perso->img_ptr,
-		perso->position[0], perso->position[1]);
-	return (perso->img_ptr);
+	mlx->img_ptr = mlx_xpm_file_to_image(mlx->init, mlx->path,
+			&mlx->size, &mlx->size);
+	mlx_put_image_to_window(mlx->init, mlx->win, mlx->img_ptr,
+		mlx->position[0], mlx->position[1]);
+	return (mlx->img_ptr);
 }
 
-void	*import_map(t_var_env *mlx, t_img *map)
+void	*import_map(t_perso_env *mlx, t_img *map)
 {
 
 	map->size = 64;

@@ -6,19 +6,20 @@
 /*   By: astachni <astachni@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/31 14:52:20 by astachni          #+#    #+#             */
-/*   Updated: 2022/12/31 15:34:23 by astachni         ###   ########.fr       */
+/*   Updated: 2023/01/02 23:21:08 by astachni         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 
 #include "../header/so_long.h"
 
-t_perso	perso_charact(t_perso *perso)
+t_perso_env	perso_charact(t_perso_env *perso)
 {
 	perso->path = ft_strdup("./sprites/pikachu.xpm");
 	perso->position = malloc(2 * sizeof(int));
 	perso->position[0] = 64;
 	perso->position[1] = 64;
+	perso->img_ptr = NULL;
 	return (*perso);
 }
 

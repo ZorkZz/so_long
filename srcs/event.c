@@ -6,22 +6,55 @@
 /*   By: astachni <astachni@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/30 14:39:14 by astachni          #+#    #+#             */
-/*   Updated: 2022/12/31 02:58:15 by astachni         ###   ########.fr       */
+/*   Updated: 2023/01/02 23:23:26 by astachni         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../header/so_long.h"
 
-int	event(int key, t_var_env *mlx)
+t_perso_env	*w_pressed(t_perso_env *mlx)
+{
+	mlx_destroy_image(mlx->init, mlx->img_ptr);
+	mlx_do_sync(mlx->init);
+	mlx->position[1] -= 64;
+	mlx->img_ptr = import_sprite_charactere(mlx);
+	return (mlx);
+}
+
+t_perso_env	*a_pressed(t_perso_env *mlx)
+{
+	mlx_destroy_image(mlx->init, mlx->img_ptr);
+	mlx->position[0] -= 64;
+	mlx->img_ptr = import_sprite_charactere(mlx);
+	return (mlx);
+}
+
+t_perso_env	*s_pressed(t_perso_env *mlx)
+{
+	mlx_destroy_image(mlx->init, mlx->img_ptr);
+	mlx->position[1] += 64;
+	mlx->img_ptr = import_sprite_charactere(mlx);
+	return (mlx);
+}
+
+t_perso_env	*d_pressed(t_perso_env *mlx)
+{
+	mlx_destroy_image(mlx->init, mlx->img_ptr);
+	mlx->position[0] += 64;
+	mlx->img_ptr = import_sprite_charactere(mlx);
+	return (mlx);
+}
+
+int	event(int key, t_perso_env *mlx)
 {
 	if (key == 'w')
-		ft_printf("%c\n", key);
+		mlx = w_pressed(mlx);
 	else if (key == 'a')
-		ft_printf("%c\n", key);
+		mlx =  a_pressed(mlx);
 	else if (key == 's')
-		ft_printf("%c\n", key);
+		mlx = s_pressed(mlx);
 	else if (key == 'd')
-		ft_printf("%c\n", key);
+		mlx = d_pressed(mlx);
 	else if (key == 65307)
 	{
 		close_mlx(mlx);
