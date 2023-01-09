@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   event.c                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: astachni <astachni@student.42lyon.fr>      +#+  +:+       +#+        */
+/*   By: astachni@student.42lyon.fr <astachni>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/30 14:39:14 by astachni          #+#    #+#             */
-/*   Updated: 2023/01/02 23:23:26 by astachni         ###   ########.fr       */
+/*   Updated: 2023/01/09 18:07:57 by astachni@st      ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -47,15 +47,15 @@ t_perso_env	*d_pressed(t_perso_env *mlx)
 
 int	event(int key, t_perso_env *mlx)
 {
-	if (key == 'w')
+	if (key == W)
 		mlx = w_pressed(mlx);
-	else if (key == 'a')
+	else if (key == A)
 		mlx =  a_pressed(mlx);
-	else if (key == 's')
+	else if (key == S)
 		mlx = s_pressed(mlx);
-	else if (key == 'd')
+	else if (key == D)
 		mlx = d_pressed(mlx);
-	else if (key == 65307)
+	else if (key == ESC)
 	{
 		close_mlx(mlx);
 		ft_printf("%s\n", "fermeture de la fenetre");

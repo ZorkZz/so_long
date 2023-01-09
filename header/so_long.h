@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   so_long.h                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: astachni <astachni@student.42lyon.fr>      +#+  +:+       +#+        */
+/*   By: astachni@student.42lyon.fr <astachni>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/28 22:46:03 by astachni          #+#    #+#             */
-/*   Updated: 2022/12/30 19:50:55 by astachni         ###   ########.fr       */
+/*   Updated: 2023/01/09 17:43:52 by astachni@st      ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,11 @@
 
 # define SO_LONG_H
 
-# include <mlx.h>
+# ifdef __APPLE__
+#  include "../mlx/mlx.h"
+# elif __linux__
+#  include "../mlx_linux/mlx.h"
+# endif
 # include <stddef.h>
 # include "../libs/ft_printf/ft_printf.h"
 # include "../libs/libft/libft.h"
