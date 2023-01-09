@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   var.h                                              :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: astachni@student.42lyon.fr <astachni>      +#+  +:+       +#+        */
+/*   By: astachni <astachni@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/29 15:23:11 by astachni          #+#    #+#             */
-/*   Updated: 2023/01/09 18:07:51 by astachni@st      ###   ########.fr       */
+/*   Updated: 2023/01/09 18:51:02 by astachni         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -47,7 +47,7 @@
 #   define ESC 53
 #  endif
 
-# elif __LINUX__
+# else
 
 #  ifndef A
 #   define A 'a'
