@@ -1,6 +1,6 @@
 NAME = so_long
 
-OBJS_DIR = ./
+OBJS_DIR = objs/
 
 SRCS = srcs/main.c srcs/error.c  srcs/close_win.c srcs/event.c srcs/import_sprite.c srcs/perso_map_characteristics.c srcs/free_all.c
 
@@ -16,30 +16,50 @@ RM = rm -f
 
 HEADER = header/so_long.h header/proto.h header/struct.h header/var.h
 
-MAKE_FT_PRINTF = $(MAKE) -C libs/ft_printf/
-
 ifeq ($(shell uname -s), Linux)
-%.o: %.c $(HEADER) Makefile
+$(OBJS_DIR)%.o: %.c $(HEADER) Makefile
 	$(CC) $(CFLAGS) -g -I/usr/include -Imlx_linux -O3 -c $< -o $@
 
 $(NAME):	$(OBJS)
+	make -C libs/libft
+	make -C libs/ft_printf
+	make -C mlx_linux
 	$(CC) $(CFLAGS) -g $(OBJS) $(LIBS) -Lmlx_linux -lmlx_Linux -L/usr/lib -Imlx_linux -lXext -lX11 -lm -lz -o $(NAME)
+
+clean:
+	make clean -C libs/libft
+	make clean -C libs/ft_printf
+	make clean -C mlx_linux
+	$(RM) $(OBJS)
+
+fclean: clean
+	make fclean -C libs/libft
+	make fclean -C libs/ft_printf
+	$(RM) $(NAME)
+
 else
 $(OBJS_DIR)%.o: %c $(HEADER) Makefile
 	$(CC) $(CFLAGS) -Imlx -c $< -o $@
 
 $(NAME):	$(OBJS)
+	make -C libs/libft
+	make -C libs/ft_printf
+	make -C mlx_linux
 	$(CC) $(OBJS) $(LIBS) -Lmlx -lmlx -framework OpenGL -framework AppKit -o $(NAME)
-endif
-
-all: $(NAME)
-	$(MAKE_FT_PRINTF)
 
 clean:
+	make clean -C libs/libft
+	make clean -C libs/ft_printf
+	make clean -C mlx
 	$(RM) $(OBJS)
 
 fclean: clean
+	make fclean -C libs/libft
+	make fclean -C libs/ft_printf
 	$(RM) $(NAME)
+endif
+
+all: $(NAME)
 
 re: fclean all
 
