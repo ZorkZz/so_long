@@ -6,7 +6,7 @@
 /*   By: astachni <astachni@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/29 15:23:11 by astachni          #+#    #+#             */
-/*   Updated: 2023/01/09 18:51:02 by astachni         ###   ########.fr       */
+/*   Updated: 2023/01/12 17:10:50 by astachni         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -47,7 +47,7 @@
 #   define ESC 53
 #  endif
 
-# else
+# elif __linux__
 
 #  ifndef A
 #   define A 'a'

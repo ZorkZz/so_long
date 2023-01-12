@@ -6,7 +6,7 @@
 /*   By: astachni <astachni@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/31 14:52:20 by astachni          #+#    #+#             */
-/*   Updated: 2023/01/02 23:21:08 by astachni         ###   ########.fr       */
+/*   Updated: 2023/01/12 18:50:04 by astachni         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,7 +25,7 @@ t_perso_env	perso_charact(t_perso_env *perso)
 
 t_img	map_charact(t_img *map)
 {
-	map->path = ft_strdup("./sprites/obstacle0.xpm");
+	map->path = ft_strdup("./sprites/grass0.xpm");
 	map->position = malloc(2 * sizeof(int));
 	map->position[0] = 0;
 	map->position[1] = 0;

@@ -6,7 +6,7 @@
 /*   By: astachni <astachni@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/16 17:02:13 by astachni          #+#    #+#             */
-/*   Updated: 2023/01/02 23:11:40 by astachni         ###   ########.fr       */
+/*   Updated: 2023/01/12 18:12:45 by astachni         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,7 @@
 
 //map == .ber
 
-int	main(void)
+int	main(int ac, char **av)
 {
 	t_perso_env	mlx;
 	t_img		map;
@@ -28,6 +28,7 @@ int	main(void)
 	if (mlx.win == NULL)
 		return (-1);
 	mlx.img_ptr = import_sprite_charactere(&mlx);
+	map = read_map(ac, av, &map, &mlx);
 	if (!map.img_ptr || !mlx.img_ptr)
 		return (error(4, "map or perso null"));
 	mlx_hook(mlx.win, 17, 1L << 2, close_mlx, &mlx);

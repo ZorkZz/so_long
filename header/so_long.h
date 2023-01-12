@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   so_long.h                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: astachni@student.42lyon.fr <astachni>      +#+  +:+       +#+        */
+/*   By: astachni <astachni@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/28 22:46:03 by astachni          #+#    #+#             */
-/*   Updated: 2023/01/09 17:43:52 by astachni@st      ###   ########.fr       */
+/*   Updated: 2023/01/12 17:11:12 by astachni         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,8 +22,10 @@
 # include <stddef.h>
 # include "../libs/ft_printf/ft_printf.h"
 # include "../libs/libft/libft.h"
+# include "../libs/get_next_line/get_next_line.h"
 # include "struct.h"
 # include "var.h"
 # include "proto.h"
+# include <fcntl.h>
 
 #endif
