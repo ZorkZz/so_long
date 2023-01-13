@@ -6,7 +6,7 @@
 /*   By: astachni@student.42lyon.fr <astachni>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/29 15:27:02 by astachni          #+#    #+#             */
-/*   Updated: 2023/01/13 20:47:43 by astachni@st      ###   ########.fr       */
+/*   Updated: 2023/01/13 21:02:08 by astachni@st      ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,9 +16,9 @@
 typedef struct s_img
 {
 	char	*path;
-	void	*img_ptr;
+	void	**img_ptr;
 	int		size;
-	int		*position;
+	int		**position;
 }	t_img;
 
 typedef struct s_perso
