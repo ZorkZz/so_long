@@ -3,48 +3,47 @@
 /*                                                        :::      ::::::::   */
 /*   read_map.c                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: astachni <astachni@student.42lyon.fr>      +#+  +:+       +#+        */
+/*   By: astachni@student.42lyon.fr <astachni>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/12 17:07:11 by astachni          #+#    #+#             */
-/*   Updated: 2023/01/12 18:38:25 by astachni         ###   ########.fr       */
+/*   Updated: 2023/01/13 20:58:40 by astachni@st      ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../header/so_long.h"
 
-void	obstacle(int i, char *str, t_img *map)
+void	obstacle(int i, char *str, t_perso_env_map *env)
 {
 	if (str[i] == 'x')
 	{
-		if (map->path)
-			free(map->path);
-		map->path = ft_strdup("./sprites/obstacle1.xpm");
+		if (env->map.path)
+			free(env->map.path);
+		env->map.path = ft_strdup("./sprites/obstacle1.xpm");
 	}
 }
 
-void	grass(int i, char *str, t_img *map)
+void	grass(int i, char *str, t_perso_env_map *env)
 {
 	if (str[i] == 'o')
 	{
-		if (map->path)
-			free(map->path);
-		map->path = ft_strdup("./sprites/grass0.xpm");
+		if (env->map.path)
+			free(env->map.path);
+		env->map.path = ft_strdup("./sprites/grass0.xpm");
 	}
 }
 
-int	perso(int i, char *str, t_img *map, t_perso_env *mlx)
+int	perso(int i, char *str, t_perso_env_map *env)
 {
 	if (str[i] == 'p')
 	{
-		mlx->position[0] = map->position[0];
-		mlx->position[1] = map->position[1];
-		mlx->img_ptr = import_sprite_charactere(mlx);
+		env->perso.position[0] = env->map.position[0];
+		env->perso.position[1] = env->map.position[1];
+		env->perso.img_ptr = import_sprite_charactere(env);
 		i++;
-		map->position[0] += 64;
+		env->map.position[0] += 64;
 	}
 	return (i);
 }
-
 
 int	open_fd(int ac, char **av)
 {
@@ -58,8 +57,7 @@ int	open_fd(int ac, char **av)
 	return (fd);
 }
 
-
-t_img	read_map(int ac, char **av, t_img *map, t_perso_env *mlx)
+t_perso_env_map	read_map(int ac, char **av, t_perso_env_map *env)
 {
 	int		fd;
 	char	*str;
@@ -68,8 +66,8 @@ t_img	read_map(int ac, char **av, t_img *map, t_perso_env *mlx)
 	fd = open_fd(ac, av);
 	if (fd == -1)
 	{
-		map->img_ptr = NULL;
-		return (*map);
+		env->map.img_ptr = NULL;
+		return (*env);
 	}
 	str = get_next_line(fd);
 	while (str)
@@ -77,19 +75,19 @@ t_img	read_map(int ac, char **av, t_img *map, t_perso_env *mlx)
 		i = 0;
 		while (str && str[i] && str[i] != '\n')
 		{
-			obstacle(i, str, map);
-			grass(i, str, map);
-			i = perso(i, str, map, mlx);
-			import_map(mlx, map);
-			map->position[0] += 64;
+			obstacle(i, str, env);
+			grass(i, str, env);
+			i = perso(i, str, env);
+			import_map(env);
+			env->map.position[0] += 64;
 			i++;
 		}
-		map->position[1] += 64;
-		map->position[0] = 0;
+		env->map.position[1] += 64;
+		env->map.position[0] = 0;
 		free(str);
 		str = get_next_line(fd);
 	}
 	if (str)
 		free(str);
-	return (*map);
+	return (*env);
 }

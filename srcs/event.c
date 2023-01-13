@@ -3,75 +3,72 @@
 /*                                                        :::      ::::::::   */
 /*   event.c                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: astachni <astachni@student.42lyon.fr>      +#+  +:+       +#+        */
+/*   By: astachni@student.42lyon.fr <astachni>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/30 14:39:14 by astachni          #+#    #+#             */
-/*   Updated: 2023/01/12 18:52:19 by astachni         ###   ########.fr       */
+/*   Updated: 2023/01/13 20:52:55 by astachni@st      ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../header/so_long.h"
 
-t_perso_env	*w_pressed(t_perso_env *mlx, t_img *map)
+t_perso_env_map	*w_pressed(t_perso_env_map *env)
 {
-	map->position[1] = mlx->position[1];
-	map->position[0] = mlx->position[0];
-	map->path = ft_strdup("./sprites/grass0.xpm");
-	import_map(mlx, map);
-	mlx->position[1] -= 64;
-	mlx->img_ptr = import_sprite_charactere(mlx);
-	return (mlx);
+	env->map.position[1] = env->perso.position[1];
+	env->map.position[0] = env->perso.position[0];
+	env->map.path = ft_strdup("./sprites/grass0.xpm");
+	import_map(env);
+	env->perso.position[1] -= 64;
+	env->perso.img_ptr = import_sprite_charactere(env);
+	return (env);
 }
 
-t_perso_env	*a_pressed(t_perso_env *mlx, t_img *map)
+t_perso_env_map	*a_pressed(t_perso_env_map *env)
 {
-	map->position[1] = mlx->position[1];
-	map->position[0] = mlx->position[0];
-	map->path = ft_strdup("./sprites/grass0.xpm");
-	import_map(mlx, map);
-	mlx->position[0] -= 64;
-	mlx->img_ptr = import_sprite_charactere(mlx);
-	return (mlx);
+	env->map.position[1] = env->perso.position[1];
+	env->map.position[0] = env->perso.position[0];
+	env->map.path = ft_strdup("./sprites/grass0.xpm");
+	import_map(env);
+	env->perso.position[0] -= 64;
+	env->perso.img_ptr = import_sprite_charactere(env);
+	return (env);
 }
 
-t_perso_env	*s_pressed(t_perso_env *mlx, t_img *map)
+t_perso_env_map	*s_pressed(t_perso_env_map *env)
 {
-	map->position[1] = mlx->position[1];
-	map->position[0] = mlx->position[0];
-	map->path = ft_strdup("./sprites/grass0.xpm");
-	import_map(mlx, map);
-	mlx->position[1] += 64;
-	mlx->img_ptr = import_sprite_charactere(mlx);
-	return (mlx);
+	env->map.position[1] = env->perso.position[1];
+	env->map.position[0] = env->perso.position[0];
+	env->map.path = ft_strdup("./sprites/grass0.xpm");
+	import_map(env);
+	env->perso.position[1] += 64;
+	env->perso.img_ptr = import_sprite_charactere(env);
+	return (env);
 }
 
-t_perso_env	*d_pressed(t_perso_env *mlx, t_img *map)
+t_perso_env_map	*d_pressed(t_perso_env_map *env)
 {
-	map->position[1] = mlx->position[1];
-	map->position[0] = mlx->position[0];
-	map->path = ft_strdup("./sprites/grass0.xpm");
-	import_map(mlx, map);
-	mlx->position[0] += 64;
-	mlx->img_ptr = import_sprite_charactere(mlx);
-	return (mlx);
+	env->map.position[1] = env->perso.position[1];
+	env->map.position[0] = env->perso.position[0];
+	env->map.path = ft_strdup("./sprites/grass0.xpm");
+	import_map(env);
+	env->perso.position[0] += 64;
+	env->perso.img_ptr = import_sprite_charactere(env);
+	return (env);
 }
 
-int	event(int key, t_perso_env *mlx)
+int	event(int key, t_perso_env_map *env)
 {
-	t_img	img;
-
-	img = map_charact(&img);
 	if (key == W)
-		mlx = w_pressed(mlx, &img);
+		env = w_pressed(env);
 	else if (key == A)
-		mlx = a_pressed(mlx, &img);
+		env = a_pressed(env);
 	else if (key == S)
-		mlx = s_pressed(mlx, &img);
+		env = s_pressed(env);
 	else if (key == D)
-		mlx = d_pressed(mlx, &img);
+		env = d_pressed(env);
 	else if (key == ESC)
 	{
-		close_mlx(mlx);
+		close_mlx(env);
 		ft_printf("%s\n", "fermeture de la fenetre");
 	}
 	else

@@ -1,12 +1,12 @@
 NAME = so_long
 
-OBJS_DIR = objs/
+OBJS_DIR = 
 
 SRCS = srcs/main.c srcs/error.c  srcs/close_win.c srcs/event.c srcs/import_sprite.c srcs/perso_map_characteristics.c srcs/free_all.c srcs/read_map.c
 
 OBJS = $(SRCS:%.c=$(OBJS_DIR)%.o)
 
-LIBS = libs/ft_printf/libftprintf.a libs/libft/libft.a libs/get_next_line/get_next_line.a
+LIBS = libs/ft_printf/libftprintf.a libs/get_next_line/get_next_line.a libs/libft/libft.a
 
 CC = cc
 
@@ -21,10 +21,10 @@ $(OBJS_DIR)%.o: %.c $(HEADER) Makefile
 	$(CC) $(CFLAGS) -g -I/usr/include -Imlx_linux -O3 -c $< -o $@
 
 $(NAME):	$(OBJS)
-	make -C libs/libft
+	make bonus -C libs/libft
 	make -C libs/ft_printf
-	make -C mlx_linux
 	make -C libs/get_next_line
+	make -C mlx_linux
 	$(CC) $(CFLAGS) -g $(OBJS) $(LIBS) -Lmlx_linux -lmlx_Linux -L/usr/lib -Imlx_linux -lXext -lX11 -lm -lz -o $(NAME)
 
 clean:
@@ -45,11 +45,11 @@ $(OBJS_DIR)%.o: %c $(HEADER) Makefile
 	$(CC) $(CFLAGS) -Imlx -c $< -o $@
 
 $(NAME):	$(OBJS)
-	make -C libs/libft
-	make -C libs/ft_printf
-	make -C mlx_linux
 	make -C libs/get_next_line
-	$(CC) $(OBJS) $(LIBS) -Lmlx -lmlx -framework OpenGL -framework AppKit -o $(NAME)
+	make bonus -C libs/libft
+	make -C libs/ft_printf
+	make -C mlx
+	$(CC) $(CFLAGS) -g $(OBJS) $(LIBS) -Lmlx -lmlx -framework OpenGL -framework AppKit -o $(NAME)
 
 clean:
 	make clean -C libs/libft

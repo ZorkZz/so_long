@@ -3,22 +3,22 @@
 /*                                                        :::      ::::::::   */
 /*   var.h                                              :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: astachni <astachni@student.42lyon.fr>      +#+  +:+       +#+        */
+/*   By: astachni@student.42lyon.fr <astachni>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/29 15:23:11 by astachni          #+#    #+#             */
-/*   Updated: 2023/01/12 17:10:50 by astachni         ###   ########.fr       */
+/*   Updated: 2023/01/13 20:30:30 by astachni@st      ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #ifndef VAR_H
 # define VAR_H
 
-# ifndef WIN_LENGHT
-#  define WIN_LENGHT 960
+# ifndef LENGHT
+#  define LENGHT 960
 # endif
 
-# ifndef WIN_WIDTH
-#  define WIN_WIDTH 540
+# ifndef WIDTH
+#  define WIDTH 540
 # endif
 
 # ifndef IMG_PATH

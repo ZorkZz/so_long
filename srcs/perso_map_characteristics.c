@@ -3,31 +3,30 @@
 /*                                                        :::      ::::::::   */
 /*   perso_map_characteristics.c                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: astachni <astachni@student.42lyon.fr>      +#+  +:+       +#+        */
+/*   By: astachni@student.42lyon.fr <astachni>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/31 14:52:20 by astachni          #+#    #+#             */
-/*   Updated: 2023/01/12 18:50:04 by astachni         ###   ########.fr       */
+/*   Updated: 2023/01/13 20:49:50 by astachni@st      ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-
 #include "../header/so_long.h"
 
-t_perso_env	perso_charact(t_perso_env *perso)
+t_perso_env_map	perso_charact(t_perso_env_map *env)
 {
-	perso->path = ft_strdup("./sprites/pikachu.xpm");
-	perso->position = malloc(2 * sizeof(int));
-	perso->position[0] = 64;
-	perso->position[1] = 64;
-	perso->img_ptr = NULL;
-	return (*perso);
+	env->perso.path = ft_strdup("./sprites/pikachu.xpm");
+	env->perso.position = malloc(2 * sizeof(int));
+	env->perso.position[0] = 64;
+	env->perso.position[1] = 64;
+	env->perso.img_ptr = NULL;
+	return (*env);
 }
 
-t_img	map_charact(t_img *map)
+t_perso_env_map	map_charact(t_perso_env_map *env)
 {
-	map->path = ft_strdup("./sprites/grass0.xpm");
-	map->position = malloc(2 * sizeof(int));
-	map->position[0] = 0;
-	map->position[1] = 0;
-	return (*map);
+	env->map.path = ft_strdup("./sprites/grass0.xpm");
+	env->map.position = malloc(2 * sizeof(int));
+	env->map.position[0] = 0;
+	env->map.position[1] = 0;
+	return (*env);
 }
