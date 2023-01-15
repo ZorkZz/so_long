@@ -6,7 +6,7 @@
 /*   By: astachni@student.42lyon.fr <astachni>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/30 14:39:14 by astachni          #+#    #+#             */
-/*   Updated: 2023/01/13 20:52:55 by astachni@st      ###   ########.fr       */
+/*   Updated: 2023/01/15 23:34:09 by astachni@st      ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,12 +14,16 @@
 
 t_perso_env_map	*w_pressed(t_perso_env_map *env)
 {
+	env = verify_moov_char(env, "up");
 	env->map.position[1] = env->perso.position[1];
 	env->map.position[0] = env->perso.position[0];
 	env->map.path = ft_strdup("./sprites/grass0.xpm");
 	import_map(env);
 	env->perso.position[1] -= 64;
 	env->perso.img_ptr = import_sprite_charactere(env);
+	int	i = 0;
+	while (env->map.map_char[i])
+		ft_printf("%s", env->map.map_char[i++]);
 	return (env);
 }
 

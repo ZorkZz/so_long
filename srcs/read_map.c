@@ -6,7 +6,7 @@
 /*   By: astachni@student.42lyon.fr <astachni>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/12 17:07:11 by astachni          #+#    #+#             */
-/*   Updated: 2023/01/13 20:58:40 by astachni@st      ###   ########.fr       */
+/*   Updated: 2023/01/15 23:28:26 by astachni@st      ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -55,6 +55,32 @@ int	open_fd(int ac, char **av)
 	if (fd < 0)
 		return (-1);
 	return (fd);
+}
+
+t_perso_env_map	map_read(int ac, char **av, t_perso_env_map *env)
+{
+	int		fd;
+	char	*str;
+	int		i;
+
+	fd = open_fd(ac, av);
+	if (fd < 0)
+		return (*env);
+	str = get_next_line(fd);
+	i = 0;
+	if (env->map.map_char)
+		free(env->map.map_char);
+	while (str)
+	{
+		env->map.map_char = parse_map(env, str);
+		if (str)
+			free(str);
+		str = get_next_line(fd);
+		i++;
+	}
+	if (str)
+		free(str);
+	return (*env);
 }
 
 t_perso_env_map	read_map(int ac, char **av, t_perso_env_map *env)

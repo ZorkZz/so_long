@@ -2,30 +2,34 @@ NAME = so_long
 
 OBJS_DIR = 
 
-SRCS = srcs/main.c srcs/error.c  srcs/close_win.c srcs/event.c srcs/import_sprite.c srcs/perso_map_characteristics.c srcs/free_all.c srcs/read_map.c
+SRCS = srcs/main.c srcs/error.c  srcs/close_win.c srcs/event.c srcs/import_sprite.c srcs/perso_map_characteristics.c srcs/free_all.c srcs/read_map.c srcs/parse_map.c srcs/verify_moov_char.c
 
-OBJS = $(SRCS:%.c=$(OBJS_DIR)%.o)
+OBJS = $(SRCS:%.c=%.o)
 
 LIBS = libs/ft_printf/libftprintf.a libs/get_next_line/get_next_line.a libs/libft/libft.a
 
 CC = cc
 
-CFLAGS = -Wall -Werror -Wextra
+CFLAGS = -Wall -Werror -Wextra -g3 -fsanitize=address
+
+MLX_MAC_FLAGS = -Lmlx -lmlx -framework OpenGL -framework AppKit
+
+
 
 RM = rm -f
 
 HEADER = header/so_long.h header/proto.h header/struct.h header/var.h
 
 ifeq ($(shell uname -s), Linux)
-$(OBJS_DIR)%.o: %.c $(HEADER) Makefile
-	$(CC) $(CFLAGS) -g -I/usr/include -Imlx_linux -O3 -c $< -o $@
+%.o: %.c $(HEADER) Makefile
+	$(CC) $(CFLAGS) -I/usr/include -Imlx_linux -O3 -c $< -o $@
 
 $(NAME):	$(OBJS)
 	make bonus -C libs/libft
 	make -C libs/ft_printf
 	make -C libs/get_next_line
 	make -C mlx_linux
-	$(CC) $(CFLAGS) -g $(OBJS) $(LIBS) -Lmlx_linux -lmlx_Linux -L/usr/lib -Imlx_linux -lXext -lX11 -lm -lz -o $(NAME)
+	$(CC) $(CFLAGS) $(OBJS) $(LIBS) -Lmlx_linux -lmlx_Linux -L/usr/lib -Imlx_linux -lXext -lX11 -lm -lz -o $(NAME)
 
 clean:
 	make clean -C libs/libft
@@ -41,15 +45,15 @@ fclean: clean
 	$(RM) $(NAME)
 
 else
-$(OBJS_DIR)%.o: %c $(HEADER) Makefile
-	$(CC) $(CFLAGS) -Imlx -c $< -o $@
+%.o: %c $(HEADER) Makefile
+	$(CC) $(CFLAGS) $(MLX_MAC_FLAGS) -c $< -o $@
 
 $(NAME):	$(OBJS)
 	make -C libs/get_next_line
 	make bonus -C libs/libft
 	make -C libs/ft_printf
 	make -C mlx
-	$(CC) $(CFLAGS) -g $(OBJS) $(LIBS) -Lmlx -lmlx -framework OpenGL -framework AppKit -o $(NAME)
+	$(CC) $(CFLAGS) $(OBJS) $(LIBS) $(MLX_MAC_FLAGS) -o $(NAME)
 
 clean:
 	make clean -C libs/libft
