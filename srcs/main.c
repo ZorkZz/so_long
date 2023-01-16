@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   main.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: astachni@student.42lyon.fr <astachni>      +#+  +:+       +#+        */
+/*   By: astachni <astachni@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/16 17:02:13 by astachni          #+#    #+#             */
-/*   Updated: 2023/01/15 23:25:43 by astachni@st      ###   ########.fr       */
+/*   Updated: 2023/01/16 21:58:13 by astachni         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,15 +17,8 @@
 int	main(int ac, char **av)
 {
 	t_perso_env_map	env;
-	int				i;
 
 	env = map_read(ac, av, &env);
-	i = 0;
-	while (env.map.map_char[i])
-	{
-		ft_printf("%s", env.map.map_char[i]);
-		i++;
-	}
 	env = perso_charact(&env);
 	env = map_charact(&env);
 	env.mlx.init = mlx_init();

@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   proto.h                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: astachni@student.42lyon.fr <astachni>      +#+  +:+       +#+        */
+/*   By: astachni <astachni@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/29 15:24:37 by astachni          #+#    #+#             */
-/*   Updated: 2023/01/15 23:05:47 by astachni@st      ###   ########.fr       */
+/*   Updated: 2023/01/16 20:21:44 by astachni         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,6 +24,6 @@ void			*free_all(int value, t_perso_env_map *env);
 t_perso_env_map	read_map(int ac, char **av,t_perso_env_map *env);
 char			**parse_map(t_perso_env_map *env, char *strs);
 t_perso_env_map	map_read(int ac, char **av, t_perso_env_map *env);
-t_perso_env_map	*verify_moov_char(t_perso_env_map *env, char *moov);
+t_perso_env_map	*verify_moov_char(t_perso_env_map *env, int moov);
 
 #endif

@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   parse_map.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: astachni@student.42lyon.fr <astachni>      +#+  +:+       +#+        */
+/*   By: astachni <astachni@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/15 17:35:33 by astachni@st       #+#    #+#             */
-/*   Updated: 2023/01/15 21:59:30 by astachni@st      ###   ########.fr       */
+/*   Updated: 2023/01/16 22:02:19 by astachni         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -44,11 +44,11 @@ char	**cpy_in_struct(char **map, char **str)
 	size_t	i;
 
 	len = ft_strslen(str);
-	map = malloc((len + 1) * sizeof(char*));
+	map = malloc((len + 1) * sizeof(char *));
 	if (!map)
 		return (NULL);
 	i = 0;
-	while (map[i] && str && str[i] != NULL && i < len)
+	while (map && str && str[i] != NULL && i < len)
 	{
 		map[i] = ft_strdup(str[i]);
 		i++;
@@ -67,7 +67,7 @@ char	**parse_map(t_perso_env_map *env, char *str)
 	if (!str)
 		return (NULL);
 	len = ft_strslen(env->map.map_char);
-	strs_temp = malloc((len + 2) * sizeof(char*));
+	strs_temp = malloc((len + 2) * sizeof(char *));
 	if (!strs_temp)
 		return (NULL);
 	i = 0;

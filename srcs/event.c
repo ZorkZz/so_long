@@ -3,73 +3,93 @@
 /*                                                        :::      ::::::::   */
 /*   event.c                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: astachni@student.42lyon.fr <astachni>      +#+  +:+       +#+        */
+/*   By: astachni <astachni@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/30 14:39:14 by astachni          #+#    #+#             */
-/*   Updated: 2023/01/15 23:34:09 by astachni@st      ###   ########.fr       */
+/*   Updated: 2023/01/16 22:39:15 by astachni         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../header/so_long.h"
 
-t_perso_env_map	*w_pressed(t_perso_env_map *env)
+t_perso_env_map	*w_pressed(t_perso_env_map *env, int moov)
 {
-	env = verify_moov_char(env, "up");
-	env->map.position[1] = env->perso.position[1];
-	env->map.position[0] = env->perso.position[0];
-	env->map.path = ft_strdup("./sprites/grass0.xpm");
-	import_map(env);
-	env->perso.position[1] -= 64;
-	env->perso.img_ptr = import_sprite_charactere(env);
-	int	i = 0;
-	while (env->map.map_char[i])
-		ft_printf("%s", env->map.map_char[i++]);
+	env = verify_moov_char(env, moov);
+	if (env->perso.can_moov == 1)
+	{
+		env->map.position[1] = env->perso.position[1];
+		env->map.position[0] = env->perso.position[0];
+		env->map.path = ft_strdup("./sprites/grass0.xpm");
+		import_map(env);
+		env->perso.position[1] -= 64;
+		env->perso.img_ptr = import_sprite_charactere(env);
+	}
+	else
+		ft_printf("\nyou can't go up\n");
 	return (env);
 }
 
-t_perso_env_map	*a_pressed(t_perso_env_map *env)
+t_perso_env_map	*s_pressed(t_perso_env_map *env, int moov)
 {
-	env->map.position[1] = env->perso.position[1];
-	env->map.position[0] = env->perso.position[0];
-	env->map.path = ft_strdup("./sprites/grass0.xpm");
-	import_map(env);
-	env->perso.position[0] -= 64;
-	env->perso.img_ptr = import_sprite_charactere(env);
+	env = verify_moov_char(env, moov);
+	if (env->perso.can_moov == 1)
+	{
+		env->map.position[1] = env->perso.position[1];
+		env->map.position[0] = env->perso.position[0];
+		env->map.path = ft_strdup("./sprites/grass0.xpm");
+		import_map(env);
+		env->perso.position[1] += 64;
+		env->perso.img_ptr = import_sprite_charactere(env);
+	}
+	else
+		ft_printf("\nyou can't go down\n");
 	return (env);
 }
 
-t_perso_env_map	*s_pressed(t_perso_env_map *env)
+t_perso_env_map	*a_pressed(t_perso_env_map *env, int moov)
 {
-	env->map.position[1] = env->perso.position[1];
-	env->map.position[0] = env->perso.position[0];
-	env->map.path = ft_strdup("./sprites/grass0.xpm");
-	import_map(env);
-	env->perso.position[1] += 64;
-	env->perso.img_ptr = import_sprite_charactere(env);
+	env = verify_moov_char(env, moov);
+	if (env->perso.can_moov == 1)
+	{	
+		env->map.position[1] = env->perso.position[1];
+		env->map.position[0] = env->perso.position[0];
+		env->map.path = ft_strdup("./sprites/grass0.xpm");
+		import_map(env);
+		env->perso.position[0] -= 64;
+		env->perso.img_ptr = import_sprite_charactere(env);
+	}
+	else
+		ft_printf("\nyou can't go left\n");
 	return (env);
 }
 
-t_perso_env_map	*d_pressed(t_perso_env_map *env)
+t_perso_env_map	*d_pressed(t_perso_env_map *env, int moov)
 {
-	env->map.position[1] = env->perso.position[1];
-	env->map.position[0] = env->perso.position[0];
-	env->map.path = ft_strdup("./sprites/grass0.xpm");
-	import_map(env);
-	env->perso.position[0] += 64;
-	env->perso.img_ptr = import_sprite_charactere(env);
+	env = verify_moov_char(env, moov);
+	if (env->perso.can_moov == 1)
+	{	
+		env->map.position[1] = env->perso.position[1];
+		env->map.position[0] = env->perso.position[0];
+		env->map.path = ft_strdup("./sprites/grass0.xpm");
+		import_map(env);
+		env->perso.position[0] += 64;
+		env->perso.img_ptr = import_sprite_charactere(env);
+	}
+	else
+		ft_printf("\nyou can't go right\n");
 	return (env);
 }
 
 int	event(int key, t_perso_env_map *env)
 {
 	if (key == W)
-		env = w_pressed(env);
-	else if (key == A)
-		env = a_pressed(env);
+		env = w_pressed(env, 1);
 	else if (key == S)
-		env = s_pressed(env);
+		env = s_pressed(env, 2);
+	else if (key == A)
+		env = a_pressed(env, 3);
 	else if (key == D)
-		env = d_pressed(env);
+		env = d_pressed(env, 4);
 	else if (key == ESC)
 	{
 		close_mlx(env);

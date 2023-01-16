@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   read_map.c                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: astachni@student.42lyon.fr <astachni>      +#+  +:+       +#+        */
+/*   By: astachni <astachni@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/12 17:07:11 by astachni          #+#    #+#             */
-/*   Updated: 2023/01/15 23:28:26 by astachni@st      ###   ########.fr       */
+/*   Updated: 2023/01/16 22:02:51 by astachni         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -68,8 +68,7 @@ t_perso_env_map	map_read(int ac, char **av, t_perso_env_map *env)
 		return (*env);
 	str = get_next_line(fd);
 	i = 0;
-	if (env->map.map_char)
-		free(env->map.map_char);
+	env->map.map_char = NULL;
 	while (str)
 	{
 		env->map.map_char = parse_map(env, str);
