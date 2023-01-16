@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   import_sprite.c                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: astachni@student.42lyon.fr <astachni>      +#+  +:+       +#+        */
+/*   By: astachni <astachni@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/30 15:12:18 by astachni          #+#    #+#             */
-/*   Updated: 2023/01/15 23:30:35 by astachni@st      ###   ########.fr       */
+/*   Updated: 2023/01/16 23:39:43 by astachni         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 

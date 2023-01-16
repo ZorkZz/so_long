@@ -6,13 +6,13 @@
 /*   By: astachni <astachni@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/12 17:07:11 by astachni          #+#    #+#             */
-/*   Updated: 2023/01/16 22:02:51 by astachni         ###   ########.fr       */
+/*   Updated: 2023/01/16 23:38:11 by astachni         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../header/so_long.h"
 
-void	obstacle(int i, char *str, t_perso_env_map *env)
+void	obstacle(size_t i, char *str, t_perso_env_map *env)
 {
 	if (str[i] == 'x')
 	{
@@ -22,7 +22,7 @@ void	obstacle(int i, char *str, t_perso_env_map *env)
 	}
 }
 
-void	grass(int i, char *str, t_perso_env_map *env)
+void	grass(size_t i, char *str, t_perso_env_map *env)
 {
 	if (str[i] == 'o')
 	{
@@ -32,7 +32,7 @@ void	grass(int i, char *str, t_perso_env_map *env)
 	}
 }
 
-int	perso(int i, char *str, t_perso_env_map *env)
+int	perso(size_t i, char *str, t_perso_env_map *env)
 {
 	if (str[i] == 'p')
 	{
@@ -57,62 +57,31 @@ int	open_fd(int ac, char **av)
 	return (fd);
 }
 
-t_perso_env_map	map_read(int ac, char **av, t_perso_env_map *env)
+t_perso_env_map	read_map(t_perso_env_map *env)
 {
-	int		fd;
+	size_t	i;
+	size_t	j;
 	char	*str;
-	int		i;
 
-	fd = open_fd(ac, av);
-	if (fd < 0)
-		return (*env);
-	str = get_next_line(fd);
 	i = 0;
-	env->map.map_char = NULL;
-	while (str)
+	str = env->map.map_char[i];
+	while (str && env->map.map_char[i])
 	{
-		env->map.map_char = parse_map(env, str);
-		if (str)
-			free(str);
-		str = get_next_line(fd);
-		i++;
-	}
-	if (str)
-		free(str);
-	return (*env);
-}
-
-t_perso_env_map	read_map(int ac, char **av, t_perso_env_map *env)
-{
-	int		fd;
-	char	*str;
-	int		i;
-
-	fd = open_fd(ac, av);
-	if (fd == -1)
-	{
-		env->map.img_ptr = NULL;
-		return (*env);
-	}
-	str = get_next_line(fd);
-	while (str)
-	{
-		i = 0;
-		while (str && str[i] && str[i] != '\n')
+		ft_printf("%s", env->map.map_char[i]);
+		j = 0;
+		while (str && str[j] && str[j] != '\n')
 		{
-			obstacle(i, str, env);
-			grass(i, str, env);
-			i = perso(i, str, env);
+			obstacle(j, str, env);
+			grass(j, str, env);
+			j = perso(j, str, env);
 			import_map(env);
 			env->map.position[0] += 64;
-			i++;
+			j++;
 		}
 		env->map.position[1] += 64;
 		env->map.position[0] = 0;
-		free(str);
-		str = get_next_line(fd);
+		i++;
+		str = env->map.map_char[i];
 	}
-	if (str)
-		free(str);
 	return (*env);
 }
