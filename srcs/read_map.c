@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   read_map.c                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: astachni <astachni@student.42lyon.fr>      +#+  +:+       +#+        */
+/*   By: astachni@student.42lyon.fr <astachni>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/12 17:07:11 by astachni          #+#    #+#             */
-/*   Updated: 2023/01/16 23:38:11 by astachni         ###   ########.fr       */
+/*   Updated: 2023/01/17 20:13:06 by astachni@st      ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,7 @@
 
 void	obstacle(size_t i, char *str, t_perso_env_map *env)
 {
-	if (str[i] == 'x')
+	if (str[i] == '1')
 	{
 		if (env->map.path)
 			free(env->map.path);
@@ -24,7 +24,7 @@ void	obstacle(size_t i, char *str, t_perso_env_map *env)
 
 void	grass(size_t i, char *str, t_perso_env_map *env)
 {
-	if (str[i] == 'o')
+	if (str[i] == '0')
 	{
 		if (env->map.path)
 			free(env->map.path);
@@ -34,7 +34,7 @@ void	grass(size_t i, char *str, t_perso_env_map *env)
 
 int	perso(size_t i, char *str, t_perso_env_map *env)
 {
-	if (str[i] == 'p')
+	if (str[i] == 'P')
 	{
 		env->perso.position[0] = env->map.position[0];
 		env->perso.position[1] = env->map.position[1];

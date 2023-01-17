@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   import_sprite.c                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: astachni <astachni@student.42lyon.fr>      +#+  +:+       +#+        */
+/*   By: astachni@student.42lyon.fr <astachni>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/30 15:12:18 by astachni          #+#    #+#             */
-/*   Updated: 2023/01/16 23:39:43 by astachni         ###   ########.fr       */
+/*   Updated: 2023/01/17 20:21:49 by astachni@st      ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -42,4 +42,20 @@ void	*import_map(t_perso_env_map *env)
 	mlx_put_image_to_window(env->mlx.init, env->mlx.win, env->map.img_ptr,
 		env->map.position[0], env->map.position[1]);
 	return (env->map.img_ptr);
+}
+
+void	*import_item(t_perso_env_map *env)
+{
+	env->item.size = 64;
+	if (!env->mlx.init || !env->mlx.win)
+		return (error(0, "no mlx var"), NULL);
+	if (!env->item.path)
+		return (error(1, "no path"), NULL);
+	if (!env->item.size)
+		return (error(2, "no size"), NULL);
+	env->item.itm_ptr = mlx_xpm_file_to_image(env->mlx.init, env->item.path,
+			&env->item.size, &env->item.size);
+	mlx_put_image_to_window(env->mlx.init, env->mlx.win, env->item.itm_ptr,
+		env->item.position[0], env->item.position[1]);
+	return (env->item.itm_ptr);
 }
