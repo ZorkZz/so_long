@@ -6,7 +6,7 @@
 /*   By: astachni@student.42lyon.fr <astachni>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/29 15:24:37 by astachni          #+#    #+#             */
-/*   Updated: 2023/01/17 18:27:52 by astachni@st      ###   ########.fr       */
+/*   Updated: 2023/01/18 18:55:06 by astachni@st      ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,7 +26,7 @@ char			**parse_map(t_perso_env_map *env, char *strs);
 t_perso_env_map	map_txt_to_char(int ac, char **av, t_perso_env_map *env);
 t_perso_env_map	*verify_moov_char(t_perso_env_map *env, int moov);
 void			*import_item(t_perso_env_map *env);
-t_perso_env_map	push_item(t_perso_env_map *env);
 t_perso_env_map	item_charact(t_perso_env_map *env);
+t_perso_env_map	add_charac(t_perso_env_map *env);
 
 #endif

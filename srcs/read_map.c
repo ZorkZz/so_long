@@ -6,13 +6,29 @@
 /*   By: astachni@student.42lyon.fr <astachni>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/12 17:07:11 by astachni          #+#    #+#             */
-/*   Updated: 2023/01/17 20:13:06 by astachni@st      ###   ########.fr       */
+/*   Updated: 2023/01/18 19:27:27 by astachni@st      ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../header/so_long.h"
 
-void	obstacle(size_t i, char *str, t_perso_env_map *env)
+t_perso_env_map	*position(t_perso_env_map *env, char c)
+{
+	if (c == 'P')
+	{
+		env->perso.position[0] = env->map.position[0];
+		env->perso.position[1] = env->map.position[1];
+	}
+	else if (c == 'C')
+	{
+		env->item.nb_item++;
+		env->item.position[0] = env->map.position[0];
+		env->item.position[1] = env->map.position[1];
+	}
+	return (env);
+}
+
+int	import_sprite(size_t i, char *str, t_perso_env_map *env)
 {
 	if (str[i] == '1')
 	{
@@ -20,27 +36,22 @@ void	obstacle(size_t i, char *str, t_perso_env_map *env)
 			free(env->map.path);
 		env->map.path = ft_strdup("./sprites/obstacle1.xpm");
 	}
-}
-
-void	grass(size_t i, char *str, t_perso_env_map *env)
-{
-	if (str[i] == '0')
+	else if (str[i] == '0' || str[i] == 'P')
 	{
 		if (env->map.path)
 			free(env->map.path);
 		env->map.path = ft_strdup("./sprites/grass0.xpm");
 	}
-}
-
-int	perso(size_t i, char *str, t_perso_env_map *env)
-{
+	import_map(env);
 	if (str[i] == 'P')
 	{
-		env->perso.position[0] = env->map.position[0];
-		env->perso.position[1] = env->map.position[1];
+		env = position(env, str[i]);
 		env->perso.img_ptr = import_sprite_charactere(env);
-		i++;
-		env->map.position[0] += 64;
+	}
+	else if (str[i] == 'C')
+	{
+		env = position(env, str[i]);
+		env->item.itm_ptr = import_item(env);
 	}
 	return (i);
 }
@@ -65,16 +76,15 @@ t_perso_env_map	read_map(t_perso_env_map *env)
 
 	i = 0;
 	str = env->map.map_char[i];
+	env->item.collected = 0;
+	env->item.nb_item = 0;
 	while (str && env->map.map_char[i])
 	{
 		ft_printf("%s", env->map.map_char[i]);
 		j = 0;
 		while (str && str[j] && str[j] != '\n')
 		{
-			obstacle(j, str, env);
-			grass(j, str, env);
-			j = perso(j, str, env);
-			import_map(env);
+			j = import_sprite(j, str, env);
 			env->map.position[0] += 64;
 			j++;
 		}

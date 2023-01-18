@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   parse_map.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: astachni <astachni@student.42lyon.fr>      +#+  +:+       +#+        */
+/*   By: astachni@student.42lyon.fr <astachni>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/15 17:35:33 by astachni@st       #+#    #+#             */
-/*   Updated: 2023/01/16 23:21:37 by astachni         ###   ########.fr       */
+/*   Updated: 2023/01/18 18:58:15 by astachni@st      ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -88,12 +88,12 @@ t_perso_env_map	map_txt_to_char(int ac, char **av, t_perso_env_map *env)
 	char	*str;
 	int		i;
 
+	env->map.map_char = NULL;
 	fd = open_fd(ac, av);
 	if (fd < 0)
 		return (*env);
 	str = get_next_line(fd);
 	i = 0;
-	env->map.map_char = NULL;
 	while (str)
 	{
 		env->map.map_char = parse_map(env, str);

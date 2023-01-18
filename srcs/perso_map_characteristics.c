@@ -6,7 +6,7 @@
 /*   By: astachni@student.42lyon.fr <astachni>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/31 14:52:20 by astachni          #+#    #+#             */
-/*   Updated: 2023/01/17 20:02:12 by astachni@st      ###   ########.fr       */
+/*   Updated: 2023/01/18 18:54:56 by astachni@st      ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,5 +32,14 @@ t_perso_env_map	map_charact(t_perso_env_map *env)
 t_perso_env_map	item_charact(t_perso_env_map *env)
 {
 	env->item.path = ft_strdup("./sprites/egg.xpm");
+	env->item.itm_ptr = NULL;
+	return (*env);
+}
+
+t_perso_env_map	add_charac(t_perso_env_map *env)
+{
+	*env = item_charact(env);
+	*env = map_charact(env);
+	*env = perso_charact(env);
 	return (*env);
 }

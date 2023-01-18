@@ -6,7 +6,7 @@
 /*   By: astachni@student.42lyon.fr <astachni>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/15 22:55:46 by astachni@st       #+#    #+#             */
-/*   Updated: 2023/01/17 20:17:54 by astachni@st      ###   ########.fr       */
+/*   Updated: 2023/01/18 19:38:59 by astachni@st      ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -38,6 +38,8 @@ t_perso_env_map	*up_down(t_perso_env_map *env, int moov, size_t i, size_t j)
 			env->perso.can_moov = 1;
 		}
 	}
+	if (c == 'C')
+		env->item.collected++;
 	return (env);
 }
 
