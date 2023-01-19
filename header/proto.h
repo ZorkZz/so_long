@@ -6,7 +6,7 @@
 /*   By: astachni <astachni@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/29 15:24:37 by astachni          #+#    #+#             */
-/*   Updated: 2023/01/19 16:26:45 by astachni         ###   ########.fr       */
+/*   Updated: 2023/01/19 18:08:59 by astachni         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,5 +29,6 @@ void			*import_item(t_perso_env_map *env);
 t_perso_env_map	item_charact(t_perso_env_map *env);
 t_perso_env_map	add_charac(t_perso_env_map *env);
 void			*import_exit(t_perso_env_map *env);
+void			free_map(char **strs);
 
 #endif

@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   close_win.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: astachni@student.42lyon.fr <astachni>      +#+  +:+       +#+        */
+/*   By: astachni <astachni@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/29 18:12:13 by astachni          #+#    #+#             */
-/*   Updated: 2023/01/13 20:51:07 by astachni@st      ###   ########.fr       */
+/*   Updated: 2023/01/19 18:11:05 by astachni         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,6 +14,7 @@
 
 int	close_mlx(t_perso_env_map *env)
 {
+	free_map(env->map.map_char);
 	mlx_destroy_window(env->mlx.init, env->mlx.win);
 	exit(0);
 	return (0);
