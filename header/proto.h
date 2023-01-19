@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   proto.h                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: astachni@student.42lyon.fr <astachni>      +#+  +:+       +#+        */
+/*   By: astachni <astachni@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/29 15:24:37 by astachni          #+#    #+#             */
-/*   Updated: 2023/01/18 18:55:06 by astachni@st      ###   ########.fr       */
+/*   Updated: 2023/01/19 16:26:45 by astachni         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,5 +28,6 @@ t_perso_env_map	*verify_moov_char(t_perso_env_map *env, int moov);
 void			*import_item(t_perso_env_map *env);
 t_perso_env_map	item_charact(t_perso_env_map *env);
 t_perso_env_map	add_charac(t_perso_env_map *env);
+void			*import_exit(t_perso_env_map *env);
 
 #endif

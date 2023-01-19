@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   perso_map_characteristics.c                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: astachni@student.42lyon.fr <astachni>      +#+  +:+       +#+        */
+/*   By: astachni <astachni@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/31 14:52:20 by astachni          #+#    #+#             */
-/*   Updated: 2023/01/18 18:54:56 by astachni@st      ###   ########.fr       */
+/*   Updated: 2023/01/19 16:13:44 by astachni         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,10 +36,18 @@ t_perso_env_map	item_charact(t_perso_env_map *env)
 	return (*env);
 }
 
+t_perso_env_map	exit_charac(t_perso_env_map *env)
+{
+	env->exit.path = ft_strdup("./sprites/obstacle2.xpm");
+	env->exit.img_ptr = NULL;
+	return (*env);
+}
+
 t_perso_env_map	add_charac(t_perso_env_map *env)
 {
 	*env = item_charact(env);
 	*env = map_charact(env);
 	*env = perso_charact(env);
+	*env = exit_charac(env);
 	return (*env);
 }

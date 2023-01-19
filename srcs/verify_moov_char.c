@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   verify_moov_char.c                                 :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: astachni@student.42lyon.fr <astachni>      +#+  +:+       +#+        */
+/*   By: astachni <astachni@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/15 22:55:46 by astachni@st       #+#    #+#             */
-/*   Updated: 2023/01/18 19:38:59 by astachni@st      ###   ########.fr       */
+/*   Updated: 2023/01/19 17:50:22 by astachni         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -39,7 +39,14 @@ t_perso_env_map	*up_down(t_perso_env_map *env, int moov, size_t i, size_t j)
 		}
 	}
 	if (c == 'C')
-		env->item.collected++;
+		env->item.collected += 1;
+	if (env->item.collected == env->item.nb_item && c == 'C')
+		ft_printf("\nyou can exit\n");
+	if (env->item.collected == env->item.nb_item && c == 'E')
+	{
+		ft_printf("\nYOU WIN\n");
+		exit(0);
+	}
 	return (env);
 }
 
@@ -68,6 +75,15 @@ t_perso_env_map	*left_right(t_perso_env_map *env, int moov, size_t i, size_t j)
 			env->map.map_char[i][j] = '0';
 			env->perso.can_moov = 1;
 		}
+	}
+	if (c == 'C')
+		env->item.collected += 1;
+	if (env->item.collected == env->item.nb_item && c == 'C')
+		ft_printf("\nyou can exit\n");
+	if (env->item.collected == env->item.nb_item && c == 'E')
+	{
+		ft_printf("\nYOU WIN\n");
+		exit(0);
 	}
 	return (env);
 }

@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   read_map.c                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: astachni@student.42lyon.fr <astachni>      +#+  +:+       +#+        */
+/*   By: astachni <astachni@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/12 17:07:11 by astachni          #+#    #+#             */
-/*   Updated: 2023/01/18 19:27:27 by astachni@st      ###   ########.fr       */
+/*   Updated: 2023/01/19 17:43:48 by astachni         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,27 +21,38 @@ t_perso_env_map	*position(t_perso_env_map *env, char c)
 	}
 	else if (c == 'C')
 	{
-		env->item.nb_item++;
+		env->item.nb_item += 1;
 		env->item.position[0] = env->map.position[0];
 		env->item.position[1] = env->map.position[1];
+	}
+	else if (c == 'E')
+	{
+		env->exit.position[0] = env->map.position[0];
+		env->exit.position[1] = env->map.position[1];
+	}
+	return (env);
+}
+
+t_perso_env_map	*take_sprite(char c, t_perso_env_map *env)
+{
+	if (c == '1')
+	{
+		if (env->map.path)
+			free(env->map.path);
+		env->map.path = ft_strdup("./sprites/obstacle1.xpm");
+	}
+	else if (c == '0' || c == 'P' || c == 'E' || c == 'C')
+	{
+		if (env->map.path)
+			free(env->map.path);
+		env->map.path = ft_strdup("./sprites/grass0.xpm");
 	}
 	return (env);
 }
 
 int	import_sprite(size_t i, char *str, t_perso_env_map *env)
 {
-	if (str[i] == '1')
-	{
-		if (env->map.path)
-			free(env->map.path);
-		env->map.path = ft_strdup("./sprites/obstacle1.xpm");
-	}
-	else if (str[i] == '0' || str[i] == 'P')
-	{
-		if (env->map.path)
-			free(env->map.path);
-		env->map.path = ft_strdup("./sprites/grass0.xpm");
-	}
+	take_sprite(str[i], env);
 	import_map(env);
 	if (str[i] == 'P')
 	{
@@ -52,6 +63,11 @@ int	import_sprite(size_t i, char *str, t_perso_env_map *env)
 	{
 		env = position(env, str[i]);
 		env->item.itm_ptr = import_item(env);
+	}
+	else if (str[i] == 'E')
+	{
+		env = position(env, str[i]);
+		env->exit.img_ptr = import_exit(env);
 	}
 	return (i);
 }
