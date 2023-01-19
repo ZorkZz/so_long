@@ -6,7 +6,7 @@
 /*   By: astachni <astachni@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/29 15:27:02 by astachni          #+#    #+#             */
-/*   Updated: 2023/01/19 16:09:44 by astachni         ###   ########.fr       */
+/*   Updated: 2023/01/19 18:17:27 by astachni         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -46,6 +46,7 @@ typedef struct s_perso
 	void	*img_ptr;
 	int		size;
 	int		position[2];
+	size_t	moov;
 	int		can_moov;
 }	t_perso;
 

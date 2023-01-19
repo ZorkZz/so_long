@@ -6,7 +6,7 @@
 /*   By: astachni <astachni@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/30 14:39:14 by astachni          #+#    #+#             */
-/*   Updated: 2023/01/16 22:39:15 by astachni         ###   ########.fr       */
+/*   Updated: 2023/01/19 18:27:55 by astachni         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,10 +19,14 @@ t_perso_env_map	*w_pressed(t_perso_env_map *env, int moov)
 	{
 		env->map.position[1] = env->perso.position[1];
 		env->map.position[0] = env->perso.position[0];
+		if (env->map.path)
+			free(env->map.path);
 		env->map.path = ft_strdup("./sprites/grass0.xpm");
 		import_map(env);
 		env->perso.position[1] -= 64;
 		env->perso.img_ptr = import_sprite_charactere(env);
+		env->perso.moov += 1;
+		ft_printf("\nnumber of moov: %d\n", env->perso.moov);
 	}
 	else
 		ft_printf("\nyou can't go up\n");
@@ -36,10 +40,14 @@ t_perso_env_map	*s_pressed(t_perso_env_map *env, int moov)
 	{
 		env->map.position[1] = env->perso.position[1];
 		env->map.position[0] = env->perso.position[0];
+		if (env->map.path)
+			free(env->map.path);
 		env->map.path = ft_strdup("./sprites/grass0.xpm");
 		import_map(env);
 		env->perso.position[1] += 64;
 		env->perso.img_ptr = import_sprite_charactere(env);
+		env->perso.moov += 1;
+		ft_printf("\nnumber of moov: %d\n", env->perso.moov);
 	}
 	else
 		ft_printf("\nyou can't go down\n");
@@ -53,10 +61,14 @@ t_perso_env_map	*a_pressed(t_perso_env_map *env, int moov)
 	{	
 		env->map.position[1] = env->perso.position[1];
 		env->map.position[0] = env->perso.position[0];
+		if (env->map.path)
+			free(env->map.path);
 		env->map.path = ft_strdup("./sprites/grass0.xpm");
 		import_map(env);
 		env->perso.position[0] -= 64;
 		env->perso.img_ptr = import_sprite_charactere(env);
+		env->perso.moov += 1;
+		ft_printf("\nnumber of moov: %d\n", env->perso.moov);
 	}
 	else
 		ft_printf("\nyou can't go left\n");
@@ -70,10 +82,14 @@ t_perso_env_map	*d_pressed(t_perso_env_map *env, int moov)
 	{	
 		env->map.position[1] = env->perso.position[1];
 		env->map.position[0] = env->perso.position[0];
+		if (env->map.path)
+			free(env->map.path);
 		env->map.path = ft_strdup("./sprites/grass0.xpm");
 		import_map(env);
 		env->perso.position[0] += 64;
 		env->perso.img_ptr = import_sprite_charactere(env);
+		env->perso.moov += 1;
+		ft_printf("\nnumber of moov: %d\n", env->perso.moov);
 	}
 	else
 		ft_printf("\nyou can't go right\n");

@@ -10,7 +10,7 @@ LIBS = libs/ft_printf/libftprintf.a libs/get_next_line/get_next_line.a libs/libf
 
 CC = cc
 
-CFLAGS = -Wall -Wextra -g3 -fsanitize=address
+CFLAGS = -Wall -Wextra -g3
 
 MLX_FLAGS = -Lmlx -lmlx -framework OpenGL -framework AppKit
 

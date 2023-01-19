@@ -6,7 +6,7 @@
 /*   By: astachni <astachni@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/31 14:52:20 by astachni          #+#    #+#             */
-/*   Updated: 2023/01/19 16:13:44 by astachni         ###   ########.fr       */
+/*   Updated: 2023/01/19 18:19:36 by astachni         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,6 +17,7 @@ t_perso_env_map	perso_charact(t_perso_env_map *env)
 	env->perso.path = ft_strdup("./sprites/pikachu.xpm");
 	env->perso.position[0] = 64;
 	env->perso.position[1] = 64;
+	env->perso.moov = 0;
 	env->perso.img_ptr = NULL;
 	return (*env);
 }
