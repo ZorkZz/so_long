@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   perso_map_characteristics.c                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: astachni <astachni@student.42lyon.fr>      +#+  +:+       +#+        */
+/*   By: astachni@student.42lyon.fr <astachni>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/31 14:52:20 by astachni          #+#    #+#             */
-/*   Updated: 2023/01/19 18:19:36 by astachni         ###   ########.fr       */
+/*   Updated: 2023/01/22 20:49:47 by astachni@st      ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -46,6 +46,8 @@ t_perso_env_map	exit_charac(t_perso_env_map *env)
 
 t_perso_env_map	add_charac(t_perso_env_map *env)
 {
+	env->enemy.path = ft_strdup("./sprites/pikachu.xpm");
+	env->enemy.img_ptr = NULL;
 	*env = item_charact(env);
 	*env = map_charact(env);
 	*env = perso_charact(env);

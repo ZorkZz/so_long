@@ -3,14 +3,35 @@
 /*                                                        :::      ::::::::   */
 /*   verify_moov_char.c                                 :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: astachni <astachni@student.42lyon.fr>      +#+  +:+       +#+        */
+/*   By: astachni@student.42lyon.fr <astachni>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/15 22:55:46 by astachni@st       #+#    #+#             */
-/*   Updated: 2023/01/19 17:50:22 by astachni         ###   ########.fr       */
+/*   Updated: 2023/01/22 20:54:19 by astachni@st      ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../header/so_long.h"
+
+t_perso_env_map	*can_exit(t_perso_env_map *env, char c)
+{
+	if (c == 'N')
+	{
+		ft_printf("\nTA PERDU GOURDE A JUS D'HOMME\n");
+		close_mlx(env);
+	}
+	if (c == 'C' || c == '0')
+		env->perso.can_moov = 1;
+	if (c == 'C')
+		env->item.collected += 1;
+	if (env->item.collected == env->item.nb_item && c == 'C')
+		ft_printf("\nyou can exit\n");
+	if (env->item.collected == env->item.nb_item && c == 'E')
+	{
+		ft_printf("\nYOU WIN\n");
+		close_mlx(env);
+	}
+	return (env);
+}
 
 t_perso_env_map	*up_down(t_perso_env_map *env, int moov, size_t i, size_t j)
 {
@@ -25,7 +46,6 @@ t_perso_env_map	*up_down(t_perso_env_map *env, int moov, size_t i, size_t j)
 		{
 			env->map.map_char[i - 1][j] = 'P';
 			env->map.map_char[i][j] = '0';
-			env->perso.can_moov = 1;
 		}
 	}
 	else if (moov == 2)
@@ -35,18 +55,9 @@ t_perso_env_map	*up_down(t_perso_env_map *env, int moov, size_t i, size_t j)
 		{
 			env->map.map_char[i + 1][j] = 'P';
 			env->map.map_char[i][j] = '0';
-			env->perso.can_moov = 1;
 		}
 	}
-	if (c == 'C')
-		env->item.collected += 1;
-	if (env->item.collected == env->item.nb_item && c == 'C')
-		ft_printf("\nyou can exit\n");
-	if (env->item.collected == env->item.nb_item && c == 'E')
-	{
-		ft_printf("\nYOU WIN\n");
-		exit(0);
-	}
+	env = can_exit(env, c);
 	return (env);
 }
 
@@ -63,7 +74,6 @@ t_perso_env_map	*left_right(t_perso_env_map *env, int moov, size_t i, size_t j)
 		{
 			env->map.map_char[i][j - 1] = 'P';
 			env->map.map_char[i][j] = '0';
-			env->perso.can_moov = 1;
 		}
 	}
 	else if (moov == 4)
@@ -73,18 +83,9 @@ t_perso_env_map	*left_right(t_perso_env_map *env, int moov, size_t i, size_t j)
 		{
 			env->map.map_char[i][j + 1] = 'P';
 			env->map.map_char[i][j] = '0';
-			env->perso.can_moov = 1;
 		}
 	}
-	if (c == 'C')
-		env->item.collected += 1;
-	if (env->item.collected == env->item.nb_item && c == 'C')
-		ft_printf("\nyou can exit\n");
-	if (env->item.collected == env->item.nb_item && c == 'E')
-	{
-		ft_printf("\nYOU WIN\n");
-		exit(0);
-	}
+	env = can_exit(env, c);
 	return (env);
 }
 

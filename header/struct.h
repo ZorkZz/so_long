@@ -3,15 +3,23 @@
 /*                                                        :::      ::::::::   */
 /*   struct.h                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: astachni <astachni@student.42lyon.fr>      +#+  +:+       +#+        */
+/*   By: astachni@student.42lyon.fr <astachni>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/29 15:27:02 by astachni          #+#    #+#             */
-/*   Updated: 2023/01/19 18:17:27 by astachni         ###   ########.fr       */
+/*   Updated: 2023/01/20 20:32:46 by astachni@st      ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #ifndef STRUCT_H
 # define STRUCT_H
+
+typedef struct s_enemy
+{
+	void	*img_ptr;
+	char	*path;
+	int		position[2];
+	int		size;
+}	t_enemy;
 
 typedef struct s_exit
 {
@@ -58,6 +66,7 @@ typedef struct s_env
 
 typedef struct s_perso_env_map
 {
+	t_enemy	enemy;
 	t_exit	exit;
 	t_img	map;
 	t_item	item;

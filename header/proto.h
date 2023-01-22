@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   proto.h                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: astachni <astachni@student.42lyon.fr>      +#+  +:+       +#+        */
+/*   By: astachni@student.42lyon.fr <astachni>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/29 15:24:37 by astachni          #+#    #+#             */
-/*   Updated: 2023/01/19 18:08:59 by astachni         ###   ########.fr       */
+/*   Updated: 2023/01/22 20:51:13 by astachni@st      ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,5 +30,9 @@ t_perso_env_map	item_charact(t_perso_env_map *env);
 t_perso_env_map	add_charac(t_perso_env_map *env);
 void			*import_exit(t_perso_env_map *env);
 void			free_map(char **strs);
+int				open_fd(int ac, char **av);
+size_t			ft_strslen(char **strs);
+int				map_verify(t_perso_env_map *env);
+void			*import_enemy(t_perso_env_map *env);
 
 #endif
