@@ -6,7 +6,7 @@
 /*   By: astachni <astachni@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/31 14:52:20 by astachni          #+#    #+#             */
-/*   Updated: 2023/01/25 18:14:05 by astachni         ###   ########.fr       */
+/*   Updated: 2023/01/25 22:26:34 by astachni         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -39,14 +39,14 @@ t_game	item_charact(t_game *env)
 
 t_game	exit_charac(t_game *env)
 {
-	env->exit.path = ft_strdup("./sprites/obstacle2.xpm");
+	env->exit.path = ft_strdup("./sprites/exit.xpm");
 	env->exit.img_ptr = NULL;
 	return (*env);
 }
 
 t_game	add_charac(t_game *env)
 {
-	env->enemy.path = ft_strdup("./sprites/pikachu.xpm");
+	env->enemy.path = ft_strdup("./sprites/mewtoo.xpm");
 	env->enemy.img_ptr = NULL;
 	*env = item_charact(env);
 	*env = map_charact(env);

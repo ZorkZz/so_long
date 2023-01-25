@@ -6,7 +6,7 @@
 /*   By: astachni <astachni@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/15 17:35:33 by astachni@st       #+#    #+#             */
-/*   Updated: 2023/01/25 21:03:33 by astachni         ###   ########.fr       */
+/*   Updated: 2023/01/25 21:33:15 by astachni         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,7 +28,6 @@ ssize_t	verify_char_map(t_game *env)
 		j = 0;
 		while (env->map.map_char[i] && env->map.map_char[i][j])
 		{
-			ft_printf("%c", env->map.map_char[i][j]);
 			if (env->map.map_char[i][j] == 'C')
 				env->item.nb_item += 1;
 			else if (env->map.map_char[i][j] == 'P')

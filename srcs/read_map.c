@@ -6,7 +6,7 @@
 /*   By: astachni <astachni@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/12 17:07:11 by astachni          #+#    #+#             */
-/*   Updated: 2023/01/25 19:44:46 by astachni         ###   ########.fr       */
+/*   Updated: 2023/01/25 22:16:01 by astachni         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -43,7 +43,7 @@ t_game	*take_sprite(char c, t_game *env)
 	{
 		if (env->map.path)
 			free(env->map.path);
-		env->map.path = ft_strdup("./sprites/obstacle1.xpm");
+		env->map.path = ft_strdup("./sprites/obstacle0.xpm");
 	}
 	else if (c == '0' || c == 'P' || c == 'E' || c == 'C' || c == 'N')
 	{
@@ -56,8 +56,11 @@ t_game	*take_sprite(char c, t_game *env)
 
 int	import_sprite(size_t i, char *str, t_game *env)
 {
-	take_sprite(str[i], env);
-	import_map(env);
+	if (str[i] == '1' || str[i] == '0')
+	{
+		take_sprite(str[i], env);
+		import_map(env);
+	}
 	if (str[i] == 'P')
 	{
 		env = position(env, str[i]);
@@ -85,7 +88,7 @@ int	open_fd(int ac, char **av)
 {
 	int		fd;
 
-	if (ac < 2)
+	if (ac != 2)
 		return (-1);
 	fd = open(av[1], O_RDONLY);
 	if (fd < 0)
@@ -104,7 +107,6 @@ t_game	read_map(t_game *env)
 	env->item.collected = 0;
 	while (str && env->map.map_char[i])
 	{
-		ft_printf("%s", env->map.map_char[i]);
 		j = 0;
 		while (str && str[j] && str[j] != '\n')
 		{

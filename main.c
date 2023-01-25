@@ -6,7 +6,7 @@
 /*   By: astachni <astachni@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/16 17:02:13 by astachni          #+#    #+#             */
-/*   Updated: 2023/01/25 20:39:21 by astachni         ###   ########.fr       */
+/*   Updated: 2023/01/25 21:35:21 by astachni         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,7 +22,6 @@ int	main(int ac, char **av)
 	env.mlx.init = mlx_init();
 	if (env.mlx.init == NULL)
 		return (-1);
-	ft_printf("\n%d, %d\n", env.mlx.map_size[0], env.mlx.map_size[1]);
 	env.mlx.win = mlx_new_window(env.mlx.init, env.mlx.map_size[1],
 			env.mlx.map_size[0], "so_long");
 	if (env.mlx.win == NULL)
