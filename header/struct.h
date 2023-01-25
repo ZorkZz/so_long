@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   struct.h                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: astachni@student.42lyon.fr <astachni>      +#+  +:+       +#+        */
+/*   By: astachni <astachni@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/29 15:27:02 by astachni          #+#    #+#             */
-/*   Updated: 2023/01/20 20:32:46 by astachni@st      ###   ########.fr       */
+/*   Updated: 2023/01/25 18:14:14 by astachni         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -62,9 +62,10 @@ typedef struct s_env
 {
 	void	*init;
 	void	*win;
+	int		map_size[2];
 }	t_env;
 
-typedef struct s_perso_env_map
+typedef struct s_game
 {
 	t_enemy	enemy;
 	t_exit	exit;
@@ -72,6 +73,6 @@ typedef struct s_perso_env_map
 	t_item	item;
 	t_perso	perso;
 	t_env	mlx;
-}	t_perso_env_map;
+}	t_game;
 
 #endif

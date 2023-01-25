@@ -3,23 +3,15 @@
 /*                                                        :::      ::::::::   */
 /*   var.h                                              :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: astachni@student.42lyon.fr <astachni>      +#+  +:+       +#+        */
+/*   By: astachni <astachni@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/29 15:23:11 by astachni          #+#    #+#             */
-/*   Updated: 2023/01/13 20:30:30 by astachni@st      ###   ########.fr       */
+/*   Updated: 2023/01/25 18:05:49 by astachni         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #ifndef VAR_H
 # define VAR_H
-
-# ifndef LENGHT
-#  define LENGHT 960
-# endif
-
-# ifndef WIDTH
-#  define WIDTH 540
-# endif
 
 # ifndef IMG_PATH
 #  define IMG_PATH "../imgs/"

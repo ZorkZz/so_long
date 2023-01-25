@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   main.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: astachni@student.42lyon.fr <astachni>      +#+  +:+       +#+        */
+/*   By: astachni <astachni@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/16 17:02:13 by astachni          #+#    #+#             */
-/*   Updated: 2023/01/22 20:36:52 by astachni@st      ###   ########.fr       */
+/*   Updated: 2023/01/25 20:39:21 by astachni         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,22 +14,23 @@
 
 int	main(int ac, char **av)
 {
-	t_perso_env_map	env;
+	t_game	env;
 
 	env = map_txt_to_char(ac, av, &env);
-	//ft_printf("\n%d\n", map_verify(&env));
 	if (env.map.map_char == NULL)
-		return (error(5, "no pointer for image"));
+		return (error(5, "no pointer for image", &env));
 	env.mlx.init = mlx_init();
 	if (env.mlx.init == NULL)
 		return (-1);
-	env.mlx.win = mlx_new_window(env.mlx.init, LENGHT, WIDTH, "so_long");
+	ft_printf("\n%d, %d\n", env.mlx.map_size[0], env.mlx.map_size[1]);
+	env.mlx.win = mlx_new_window(env.mlx.init, env.mlx.map_size[1],
+			env.mlx.map_size[0], "so_long");
 	if (env.mlx.win == NULL)
 		return (-1);
 	env = add_charac(&env);
 	env = read_map(&env);
 	if (!env.map.img_ptr || !env.perso.img_ptr)
-		return (error(4, "map or perso null"));
+		return (error(4, "map or perso null", &env));
 	mlx_hook(env.mlx.win, 17, 1L << 2, close_mlx, &env);
 	mlx_key_hook(env.mlx.win, event, &env);
 	mlx_loop(env.mlx.init);

@@ -6,13 +6,13 @@
 /*   By: astachni <astachni@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/30 14:39:14 by astachni          #+#    #+#             */
-/*   Updated: 2023/01/19 18:27:55 by astachni         ###   ########.fr       */
+/*   Updated: 2023/01/25 18:14:05 by astachni         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../header/so_long.h"
 
-t_perso_env_map	*w_pressed(t_perso_env_map *env, int moov)
+t_game	*w_pressed(t_game *env, int moov)
 {
 	env = verify_moov_char(env, moov);
 	if (env->perso.can_moov == 1)
@@ -33,7 +33,7 @@ t_perso_env_map	*w_pressed(t_perso_env_map *env, int moov)
 	return (env);
 }
 
-t_perso_env_map	*s_pressed(t_perso_env_map *env, int moov)
+t_game	*s_pressed(t_game *env, int moov)
 {
 	env = verify_moov_char(env, moov);
 	if (env->perso.can_moov == 1)
@@ -54,7 +54,7 @@ t_perso_env_map	*s_pressed(t_perso_env_map *env, int moov)
 	return (env);
 }
 
-t_perso_env_map	*a_pressed(t_perso_env_map *env, int moov)
+t_game	*a_pressed(t_game *env, int moov)
 {
 	env = verify_moov_char(env, moov);
 	if (env->perso.can_moov == 1)
@@ -75,7 +75,7 @@ t_perso_env_map	*a_pressed(t_perso_env_map *env, int moov)
 	return (env);
 }
 
-t_perso_env_map	*d_pressed(t_perso_env_map *env, int moov)
+t_game	*d_pressed(t_game *env, int moov)
 {
 	env = verify_moov_char(env, moov);
 	if (env->perso.can_moov == 1)
@@ -96,7 +96,7 @@ t_perso_env_map	*d_pressed(t_perso_env_map *env, int moov)
 	return (env);
 }
 
-int	event(int key, t_perso_env_map *env)
+int	event(int key, t_game *env)
 {
 	if (key == W)
 		env = w_pressed(env, 1);

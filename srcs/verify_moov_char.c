@@ -3,16 +3,16 @@
 /*                                                        :::      ::::::::   */
 /*   verify_moov_char.c                                 :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: astachni@student.42lyon.fr <astachni>      +#+  +:+       +#+        */
+/*   By: astachni <astachni@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/15 22:55:46 by astachni@st       #+#    #+#             */
-/*   Updated: 2023/01/22 20:54:19 by astachni@st      ###   ########.fr       */
+/*   Updated: 2023/01/25 18:14:05 by astachni         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../header/so_long.h"
 
-t_perso_env_map	*can_exit(t_perso_env_map *env, char c)
+t_game	*can_exit(t_game *env, char c)
 {
 	if (c == 'N')
 	{
@@ -33,7 +33,7 @@ t_perso_env_map	*can_exit(t_perso_env_map *env, char c)
 	return (env);
 }
 
-t_perso_env_map	*up_down(t_perso_env_map *env, int moov, size_t i, size_t j)
+t_game	*up_down(t_game *env, int moov, size_t i, size_t j)
 {
 	char	c;
 
@@ -61,7 +61,7 @@ t_perso_env_map	*up_down(t_perso_env_map *env, int moov, size_t i, size_t j)
 	return (env);
 }
 
-t_perso_env_map	*left_right(t_perso_env_map *env, int moov, size_t i, size_t j)
+t_game	*left_right(t_game *env, int moov, size_t i, size_t j)
 {
 	char	c;
 
@@ -89,7 +89,7 @@ t_perso_env_map	*left_right(t_perso_env_map *env, int moov, size_t i, size_t j)
 	return (env);
 }
 
-t_perso_env_map	*verify_moov_char(t_perso_env_map *env, int moov)
+t_game	*verify_moov_char(t_game *env, int moov)
 {
 	size_t	i;
 	size_t	j;

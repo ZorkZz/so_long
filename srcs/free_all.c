@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   free_all.c                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: astachni@student.42lyon.fr <astachni>      +#+  +:+       +#+        */
+/*   By: astachni <astachni@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/31 15:01:20 by astachni          #+#    #+#             */
-/*   Updated: 2023/01/13 20:57:50 by astachni@st      ###   ########.fr       */
+/*   Updated: 2023/01/25 18:14:05 by astachni         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,31 +23,28 @@
 **
 */
 
-void	*free_all(int value, t_perso_env_map *env)
+void	*free_all(int value, t_game *env)
 {
 	if (value == 0)
-	{
-		free(env->perso.position);
 		return (free(env->perso.path), NULL);
-	}
 	else if (value == 1)
 	{
 		free(env->perso.path);
 		free(env->perso.img_ptr);
-		return (free(env->perso.position), NULL);
+		return (NULL);
 	}
 	else if (value == 2)
 	{
 		free(env->map.path);
-		return (free(env->map.position), NULL);
+		return (NULL);
 	}
 	else if (value == 3)
 	{
 		free(env->map.path);
 		free(env->map.img_ptr);
-		return (free(env->map.position), NULL);
+		return (NULL);
 	}
-	return (free(env->perso.position), free(env->perso.path), \
-		free(env->perso.img_ptr), free(env->map.position), \
+	return (free(env->perso.path), \
+		free(env->perso.img_ptr), \
 		free(env->map.img_ptr), free(env->map.path), NULL);
 }

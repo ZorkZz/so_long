@@ -3,62 +3,54 @@
 /*                                                        :::      ::::::::   */
 /*   parse_map.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: astachni@student.42lyon.fr <astachni>      +#+  +:+       +#+        */
+/*   By: astachni <astachni@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/15 17:35:33 by astachni@st       #+#    #+#             */
-/*   Updated: 2023/01/18 18:58:15 by astachni@st      ###   ########.fr       */
+/*   Updated: 2023/01/25 21:03:33 by astachni         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../header/so_long.h"
 
-size_t	ft_strslen(char **strs)
+ssize_t	verify_char_map(t_game *env)
 {
-	size_t	i;
+	ssize_t	exit_number;
+	ssize_t	perso_number;
+	ssize_t	i;
+	ssize_t	j;
 
-	if (strs == NULL)
-		return (0);
+	exit_number = 0;
+	perso_number = 0;
+	env->item.nb_item = 0;
 	i = 0;
-	while (strs[i])
-		i++;
-	return (i);
-}
-
-void	free_map(char **strs)
-{
-	size_t	i;
-
-	i = 0;
-	while (strs && strs[i])
+	while (env->map.map_char && env->map.map_char[i])
 	{
-		free(strs[i]);
+		j = 0;
+		while (env->map.map_char[i] && env->map.map_char[i][j])
+		{
+			ft_printf("%c", env->map.map_char[i][j]);
+			if (env->map.map_char[i][j] == 'C')
+				env->item.nb_item += 1;
+			else if (env->map.map_char[i][j] == 'P')
+				perso_number += 1;
+			else if (env->map.map_char[i][j] == 'E')
+				exit_number += 1;
+			else if (env->map.map_char[i][j] != '0' &&
+				env->map.map_char[i][j] != '1' &&
+				env->map.map_char[i][j] != 'N' &&
+				env->map.map_char[i][j] != '\n' &&
+				env->map.map_char[i][j] != '\0')
+				return (-1);
+			j++;
+		}
 		i++;
 	}
-	if (strs)
-		free(strs);
+	if (perso_number != 1 && exit_number != 1 && env->item.nb_item < 1)
+		return (-1);
+	return (env->item.nb_item);
 }
 
-char	**cpy_in_struct(char **map, char **str)
-{
-	size_t	len;
-	size_t	i;
-
-	len = ft_strslen(str);
-	map = malloc((len + 1) * sizeof(char *));
-	if (!map)
-		return (NULL);
-	i = 0;
-	while (map && str && str[i] != NULL && i < len)
-	{
-		map[i] = ft_strdup(str[i]);
-		i++;
-	}
-	map[i] = NULL;
-	free_map(str);
-	return (map);
-}
-
-char	**parse_map(t_perso_env_map *env, char *str)
+char	**parse_map(t_game *env, char *str)
 {
 	char	**strs_temp;
 	size_t	len;
@@ -79,10 +71,10 @@ char	**parse_map(t_perso_env_map *env, char *str)
 	if (str)
 		strs_temp[i] = ft_strdup(str);
 	strs_temp[len + 1] = NULL;
-	return (cpy_in_struct(env->map.map_char, strs_temp));
+	return (ft_strsdup(env->map.map_char, strs_temp));
 }
 
-t_perso_env_map	map_txt_to_char(int ac, char **av, t_perso_env_map *env)
+t_game	map_txt_to_char(int ac, char **av, t_game *env)
 {
 	int		fd;
 	char	*str;
@@ -104,6 +96,11 @@ t_perso_env_map	map_txt_to_char(int ac, char **av, t_perso_env_map *env)
 	}
 	if (str)
 		free(str);
+	env->mlx.map_size[0] = ft_strslen(env->map.map_char) * 64;
+	env->mlx.map_size[1] = (ft_strlen(env->map.map_char[0]) - 2) * 64;
 	close(fd);
+	i = 0;
+	if (verify_char_map(env) == -1)
+		error(78, "ERROR\n BAD MAP", env);
 	return (*env);
 }
