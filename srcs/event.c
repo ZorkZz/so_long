@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   event.c                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: astachni <astachni@student.42lyon.fr>      +#+  +:+       +#+        */
+/*   By: astachni@student.42lyon.fr <astachni>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/30 14:39:14 by astachni          #+#    #+#             */
-/*   Updated: 2023/01/25 18:14:05 by astachni         ###   ########.fr       */
+/*   Updated: 2023/01/26 19:49:04 by astachni@st      ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,9 +22,9 @@ t_game	*w_pressed(t_game *env, int moov)
 		if (env->map.path)
 			free(env->map.path);
 		env->map.path = ft_strdup("./sprites/grass0.xpm");
-		import_map(env);
+		import_map(env, 0);
 		env->perso.position[1] -= 64;
-		env->perso.img_ptr = import_sprite_charactere(env);
+		import_sprite_charactere(env);
 		env->perso.moov += 1;
 		ft_printf("\nnumber of moov: %d\n", env->perso.moov);
 	}
@@ -43,9 +43,9 @@ t_game	*s_pressed(t_game *env, int moov)
 		if (env->map.path)
 			free(env->map.path);
 		env->map.path = ft_strdup("./sprites/grass0.xpm");
-		import_map(env);
+		import_map(env, 0);
 		env->perso.position[1] += 64;
-		env->perso.img_ptr = import_sprite_charactere(env);
+		import_sprite_charactere(env);
 		env->perso.moov += 1;
 		ft_printf("\nnumber of moov: %d\n", env->perso.moov);
 	}
@@ -64,9 +64,9 @@ t_game	*a_pressed(t_game *env, int moov)
 		if (env->map.path)
 			free(env->map.path);
 		env->map.path = ft_strdup("./sprites/grass0.xpm");
-		import_map(env);
+		import_map(env, 0);
 		env->perso.position[0] -= 64;
-		env->perso.img_ptr = import_sprite_charactere(env);
+		import_sprite_charactere(env);
 		env->perso.moov += 1;
 		ft_printf("\nnumber of moov: %d\n", env->perso.moov);
 	}
@@ -85,9 +85,9 @@ t_game	*d_pressed(t_game *env, int moov)
 		if (env->map.path)
 			free(env->map.path);
 		env->map.path = ft_strdup("./sprites/grass0.xpm");
-		import_map(env);
+		import_map(env, 0);
 		env->perso.position[0] += 64;
-		env->perso.img_ptr = import_sprite_charactere(env);
+		import_sprite_charactere(env);
 		env->perso.moov += 1;
 		ft_printf("\nnumber of moov: %d\n", env->perso.moov);
 	}

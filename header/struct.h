@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   struct.h                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: astachni <astachni@student.42lyon.fr>      +#+  +:+       +#+        */
+/*   By: astachni@student.42lyon.fr <astachni>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/29 15:27:02 by astachni          #+#    #+#             */
-/*   Updated: 2023/01/25 18:14:14 by astachni         ###   ########.fr       */
+/*   Updated: 2023/01/26 19:56:58 by astachni@st      ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -43,7 +43,9 @@ typedef struct s_img
 {
 	char	*path;
 	char	**map_char;
-	char	**img_ptr;
+	void	*img_ptr;
+	char	*path01;
+	void	*img_ptr01;
 	int		size;
 	int		position[2];
 }	t_img;

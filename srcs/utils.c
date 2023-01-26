@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   utils.c                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: astachni <astachni@student.42lyon.fr>      +#+  +:+       +#+        */
+/*   By: astachni@student.42lyon.fr <astachni>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/25 19:39:08 by astachni          #+#    #+#             */
-/*   Updated: 2023/01/25 19:40:47 by astachni         ###   ########.fr       */
+/*   Updated: 2023/01/26 16:51:09 by astachni@st      ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,6 +17,7 @@ char	**ft_strsdup(char **map, char **str)
 	size_t	len;
 	size_t	i;
 
+	free_map(map);
 	len = ft_strslen(str);
 	map = malloc((len + 1) * sizeof(char *));
 	if (!map)

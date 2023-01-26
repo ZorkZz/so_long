@@ -2,7 +2,7 @@ NAME = so_long
 
 OBJS_DIR = objs/
 
-SRCS = main.c srcs/error.c  srcs/close_win.c srcs/event.c srcs/import_sprite.c srcs/perso_map_characteristics.c srcs/free_all.c srcs/read_map.c srcs/parse_map.c srcs/verify_moov_char.c srcs/map_verify.c srcs/enemy.c srcs/utils.c
+SRCS = main.c srcs/error.c  srcs/close_win.c srcs/event.c srcs/import_sprite.c srcs/perso_map_characteristics.c srcs/free_all.c srcs/read_map.c srcs/parse_map.c srcs/verify_moov_char.c srcs/enemy.c srcs/utils.c
 
 OBJS = $(SRCS:%.c=$(OBJS_DIR)%.o)
 
@@ -10,7 +10,7 @@ LIBS = libs/ft_printf/libftprintf.a libs/get_next_line/get_next_line.a libs/libf
 
 CC = cc
 
-CFLAGS = -Wall -Wextra -Werror -g3 -fsanitize=address
+CFLAGS = -Wall -Wextra -Werror -g3
 
 RM = rm -f
 
@@ -41,6 +41,7 @@ $(NAME):	$(OBJS)
 	make -C libs/get_next_line
 	make -C $(PATH_MLX)
 	$(CC) $(CFLAGS) $(OBJS) $(LIBS) $(MLX_FLAGS) -o $(NAME)
+	@norminette srcs/*.c header/*.h | grep Error"
 
 clean:
 	make clean -C libs/libft
@@ -58,6 +59,7 @@ fclean: clean
 
 all: $(NAME)
 
-re: fclean all
+re: fclean
+	$(MAKE) all
 
 .PHONY:	all clean fclean re

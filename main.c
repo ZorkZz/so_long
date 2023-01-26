@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   main.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: astachni <astachni@student.42lyon.fr>      +#+  +:+       +#+        */
+/*   By: astachni@student.42lyon.fr <astachni>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/16 17:02:13 by astachni          #+#    #+#             */
-/*   Updated: 2023/01/25 21:35:21 by astachni         ###   ########.fr       */
+/*   Updated: 2023/01/26 19:00:20 by astachni@st      ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,7 +31,7 @@ int	main(int ac, char **av)
 	if (!env.map.img_ptr || !env.perso.img_ptr)
 		return (error(4, "map or perso null", &env));
 	mlx_hook(env.mlx.win, 17, 1L << 2, close_mlx, &env);
-	mlx_key_hook(env.mlx.win, event, &env);
+	mlx_hook(env.mlx.win, 2, 1L << 0, event, &env);
 	mlx_loop(env.mlx.init);
 	return (0);
 }

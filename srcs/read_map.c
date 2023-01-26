@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   read_map.c                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: astachni <astachni@student.42lyon.fr>      +#+  +:+       +#+        */
+/*   By: astachni@student.42lyon.fr <astachni>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/12 17:07:11 by astachni          #+#    #+#             */
-/*   Updated: 2023/01/25 22:16:01 by astachni         ###   ########.fr       */
+/*   Updated: 2023/01/26 20:10:32 by astachni@st      ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -56,31 +56,23 @@ t_game	*take_sprite(char c, t_game *env)
 
 int	import_sprite(size_t i, char *str, t_game *env)
 {
-	if (str[i] == '1' || str[i] == '0')
+	if (str[i] == '0' || str[i] == '1')
 	{
-		take_sprite(str[i], env);
-		import_map(env);
+		if (str[i] == '0')
+			import_map(env, 0);
+		else if (str[i] == '1')
+			import_map(env, 1);
+		return (i);
 	}
+	env = position(env, str[i]);
 	if (str[i] == 'P')
-	{
-		env = position(env, str[i]);
-		env->perso.img_ptr = import_sprite_charactere(env);
-	}
+		import_sprite_charactere(env);
 	else if (str[i] == 'C')
-	{
-		env = position(env, str[i]);
-		env->item.itm_ptr = import_item(env);
-	}
+		import_item(env);
 	else if (str[i] == 'E')
-	{
-		env = position(env, str[i]);
-		env->exit.img_ptr = import_exit(env);
-	}
+		import_exit(env);
 	else if (str[i] == 'N')
-	{
-		env = position(env, str[i]);
-		env->enemy.img_ptr = import_enemy(env);
-	}
+		import_enemy(env);
 	return (i);
 }
 
