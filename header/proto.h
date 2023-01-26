@@ -6,7 +6,7 @@
 /*   By: astachni@student.42lyon.fr <astachni>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/29 15:24:37 by astachni          #+#    #+#             */
-/*   Updated: 2023/01/26 19:48:41 by astachni@st      ###   ########.fr       */
+/*   Updated: 2023/01/26 21:42:42 by astachni@st      ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,5 +31,6 @@ int				open_fd(int ac, char **av);
 size_t			ft_strslen(char **strs);
 void			import_enemy(t_game *env);
 char			**ft_strsdup(char **map, char **str);
+void			map_verif(char **strs, t_game *env);
 
 #endif

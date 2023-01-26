@@ -6,7 +6,7 @@
 /*   By: astachni@student.42lyon.fr <astachni>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/31 14:52:20 by astachni          #+#    #+#             */
-/*   Updated: 2023/01/26 20:01:46 by astachni@st      ###   ########.fr       */
+/*   Updated: 2023/01/26 22:08:51 by astachni@st      ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,6 +32,8 @@ t_game	map_charact(t_game *env)
 	env->map.path01 = ft_strdup("./sprites/obstacle0.xpm");
 	env->map.position[0] = 0;
 	env->map.position[1] = 0;
+	env->map.img_ptr = NULL;
+	env->map.img_ptr01 = NULL;
 	env->map.img_ptr01 = mlx_xpm_file_to_image(env->mlx.init, env->map.path01,
 			&env->map.size, &env->map.size);
 	env->map.img_ptr = mlx_xpm_file_to_image(env->mlx.init, env->map.path,
@@ -65,7 +67,7 @@ t_game	add_charac(t_game *env)
 	env->enemy.path = ft_strdup("./sprites/mewtoo.xpm");
 	env->enemy.img_ptr = NULL;
 	env->enemy.img_ptr = mlx_xpm_file_to_image(env->mlx.init, env->enemy.path,
-			&env->exit.size, &env->exit.size);
+			&(env->enemy.size), &(env->enemy.size));
 	*env = item_charact(env);
 	*env = map_charact(env);
 	*env = perso_charact(env);

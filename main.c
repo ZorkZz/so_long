@@ -6,7 +6,7 @@
 /*   By: astachni@student.42lyon.fr <astachni>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/16 17:02:13 by astachni          #+#    #+#             */
-/*   Updated: 2023/01/26 19:00:20 by astachni@st      ###   ########.fr       */
+/*   Updated: 2023/01/26 22:10:21 by astachni@st      ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,6 +27,7 @@ int	main(int ac, char **av)
 	if (env.mlx.win == NULL)
 		return (-1);
 	env = add_charac(&env);
+	map_verif(env.map.map_char, &env);
 	env = read_map(&env);
 	if (!env.map.img_ptr || !env.perso.img_ptr)
 		return (error(4, "map or perso null", &env));

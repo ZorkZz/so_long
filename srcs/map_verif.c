@@ -1,0 +1,73 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   map_verif.c                                        :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: astachni@student.42lyon.fr <astachni>      +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2023/01/26 21:21:49 by astachni@st       #+#    #+#             */
+/*   Updated: 2023/01/26 22:26:09 by astachni@st      ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
+#include "../header/so_long.h"
+
+ssize_t	ft_strnlen(char *str)
+{
+	ssize_t	i;
+
+	i = 0;
+	while (str && str[i] && str[i] != '\n')
+		i++;
+	return (i);
+}
+
+void	verif_wall(char	**strs, t_game *env)
+{
+	ssize_t	i;
+	ssize_t	len;
+
+	i = 0;
+	while (strs && strs[i])
+	{
+		if (strs[i][0] != '1' || strs[i][ft_strlen(strs[i]) - 3] != '1')
+			error(8475, "ERROR\n BAD MAP\n", env);
+		i++;
+	}
+	i = 0;
+	while (strs && strs[0] && strs[0][i] && strs[0][i] != '\n')
+	{
+		if (strs[0][i] != '1')
+			error(8475, "ERROR\n BAD MAP\n", env);
+		i++;
+	}
+	i = 0;
+	len = ft_strslen(strs) - 1;
+	while (strs && strs[len] && strs[len][i] && strs[len][i] != '\n')
+	{
+		if (strs[len][i] != '1')
+			error(8475, "ERROR\n BAD MAP\n", env);
+		i++;
+	}
+}
+
+void	map_verif(char **strs, t_game *env)
+{
+	ssize_t	len;
+	ssize_t	backup_len;
+	ssize_t	i;
+
+	i = 0;
+	while (strs && strs[i])
+	{
+		len = ft_strnlen(strs[i]);
+		if (i != 0)
+		{
+			if (backup_len != len)
+				error(8475, "ERROR\n BAD MAP\n", env);
+		}
+		backup_len = len;
+		i++;
+	}
+	verif_wall(strs, env);
+}
