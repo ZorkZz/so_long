@@ -41,7 +41,7 @@ $(NAME):	$(OBJS)
 	make -C libs/get_next_line
 	make -C $(PATH_MLX)
 	$(CC) $(CFLAGS) $(OBJS) $(LIBS) $(MLX_FLAGS) -o $(NAME)
-#	@norminette main.c srcs/*.c header/*.h | grep Error"
+	@norminette main.c srcs/*.c header/*.h
 
 clean:
 	make clean -C libs/libft

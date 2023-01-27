@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   map_verif.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: astachni@student.42lyon.fr <astachni>      +#+  +:+       +#+        */
+/*   By: astachni <astachni@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/26 21:21:49 by astachni@st       #+#    #+#             */
-/*   Updated: 2023/01/26 22:26:09 by astachni@st      ###   ########.fr       */
+/*   Updated: 2023/01/27 16:34:34 by astachni         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,6 +20,14 @@ ssize_t	ft_strnlen(char *str)
 	while (str && str[i] && str[i] != '\n')
 		i++;
 	return (i);
+}
+
+void	check_map(char **map, t_game *env)
+{
+	if (ft_strslen(map) < 3)
+		error(8475, "ERROR\n BAD MAP\n", env);
+	if (ft_strlen(map[0]) < 4)
+		error(8475, "ERROR\n BAD MAP\n", env);
 }
 
 void	verif_wall(char	**strs, t_game *env)
@@ -58,6 +66,7 @@ void	map_verif(char **strs, t_game *env)
 	ssize_t	i;
 
 	i = 0;
+	backup_len = 0;
 	while (strs && strs[i])
 	{
 		len = ft_strnlen(strs[i]);
@@ -70,4 +79,5 @@ void	map_verif(char **strs, t_game *env)
 		i++;
 	}
 	verif_wall(strs, env);
+	check_map(strs, env);
 }

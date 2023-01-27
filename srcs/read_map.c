@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   read_map.c                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: astachni@student.42lyon.fr <astachni>      +#+  +:+       +#+        */
+/*   By: astachni <astachni@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/12 17:07:11 by astachni          #+#    #+#             */
-/*   Updated: 2023/01/26 20:10:32 by astachni@st      ###   ########.fr       */
+/*   Updated: 2023/01/27 20:47:53 by astachni         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -83,6 +83,8 @@ int	open_fd(int ac, char **av)
 	if (ac != 2)
 		return (-1);
 	fd = open(av[1], O_RDONLY);
+	if (ft_strncmp(&av[1][ft_strlen(av[1])] - 5, ".ber", 4) != 0)
+		return (-1);
 	if (fd < 0)
 		return (-1);
 	return (fd);

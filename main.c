@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   main.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: astachni@student.42lyon.fr <astachni>      +#+  +:+       +#+        */
+/*   By: astachni <astachni@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/16 17:02:13 by astachni          #+#    #+#             */
-/*   Updated: 2023/01/26 22:10:21 by astachni@st      ###   ########.fr       */
+/*   Updated: 2023/01/27 16:48:30 by astachni         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,6 +16,7 @@ int	main(int ac, char **av)
 {
 	t_game	env;
 
+	env.mlx.init_sprite = 0;
 	env = map_txt_to_char(ac, av, &env);
 	if (env.map.map_char == NULL)
 		return (error(5, "no pointer for image", &env));

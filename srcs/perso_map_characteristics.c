@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   perso_map_characteristics.c                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: astachni@student.42lyon.fr <astachni>      +#+  +:+       +#+        */
+/*   By: astachni <astachni@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/31 14:52:20 by astachni          #+#    #+#             */
-/*   Updated: 2023/01/26 22:08:51 by astachni@st      ###   ########.fr       */
+/*   Updated: 2023/01/27 16:50:12 by astachni         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -72,5 +72,6 @@ t_game	add_charac(t_game *env)
 	*env = map_charact(env);
 	*env = perso_charact(env);
 	*env = exit_charac(env);
+	env->mlx.init_sprite = 1;
 	return (*env);
 }
