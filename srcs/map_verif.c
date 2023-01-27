@@ -6,7 +6,7 @@
 /*   By: astachni <astachni@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/26 21:21:49 by astachni@st       #+#    #+#             */
-/*   Updated: 2023/01/27 16:34:34 by astachni         ###   ########.fr       */
+/*   Updated: 2023/01/27 23:07:21 by astachni         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -80,4 +80,5 @@ void	map_verif(char **strs, t_game *env)
 	}
 	verif_wall(strs, env);
 	check_map(strs, env);
+	//is_finis(env);
 }

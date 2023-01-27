@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   proto.h                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: astachni@student.42lyon.fr <astachni>      +#+  +:+       +#+        */
+/*   By: astachni <astachni@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/29 15:24:37 by astachni          #+#    #+#             */
-/*   Updated: 2023/01/26 21:42:42 by astachni@st      ###   ########.fr       */
+/*   Updated: 2023/01/27 22:11:45 by astachni         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,5 +32,6 @@ size_t			ft_strslen(char **strs);
 void			import_enemy(t_game *env);
 char			**ft_strsdup(char **map, char **str);
 void			map_verif(char **strs, t_game *env);
+void			is_finis(t_game *env);
 
 #endif
