@@ -6,7 +6,7 @@
 /*   By: astachni <astachni@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/29 16:37:27 by astachni          #+#    #+#             */
-/*   Updated: 2023/01/29 17:26:31 by astachni         ###   ########.fr       */
+/*   Updated: 2023/01/29 20:20:25 by astachni         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,24 +14,24 @@
 
 void	diffusion(char **map, ssize_t x, ssize_t y)
 {
-	if (map[x + 1][y] == '0' || map[x + 1][y] == 'C')
+	if (map[x + 1][y] == '0' || map[x + 1][y] == 'C' || map[x + 1][y] == 'E')
 	{
-		map[x][y] = '*';
+		map[x + 1][y] = '*';
 		diffusion(map, x + 1, y);
 	}
-	if (map[x - 1][y] == '0' || map[x - 1][y] == 'C')
+	if (map[x - 1][y] == '0' || map[x - 1][y] == 'C' || map[x - 1][y] == 'E')
 	{
-		map[x][y] = '*';
+		map[x - 1][y] = '*';
 		diffusion(map, x - 1, y);
 	}
-	if (map[x][y + 1] == '0' || map[x][y + 1] == 'C')
+	if (map[x][y + 1] == '0' || map[x][y + 1] == 'C' || map[x][y + 1] == 'E')
 	{
-		map[x][y] = '*';
+		map[x][y + 1] = '*';
 		diffusion(map, x, y + 1);
 	}
-	if (map[x][y - 1] == '0' || map[x][y - 1] == 'C')
+	if (map[x][y - 1] == '0' || map[x][y - 1] == 'C' || map[x][y - 1] == 'E')
 	{
-		map[x][y] = '*';
+		map[x][y - 1] = '*';
 		diffusion(map, x, y - 1);
 	}
 }
@@ -40,7 +40,7 @@ ssize_t	*find_coor(char **map, t_game *env)
 {
 	ssize_t	*tab;
 
-	tab = malloc(sizeof(int) * 2);
+	tab = malloc(sizeof(ssize_t) * 2);
 	if (!tab)
 		error (875, "MALLOC ERROR", env);
 	tab[0] = 0;
@@ -70,7 +70,7 @@ void	map_is_ok(char **map, t_game *env)
 		y = 0;
 		while (map[x] && map[x][y])
 		{
-			if (map[x][y] == 'C')
+			if (map[x][y] == 'C' || map[x][y] == 'E')
 			{
 				free_map(map);
 				error(485, "BAD MAP\n", env);
@@ -87,7 +87,7 @@ void	is_finish(t_game *env)
 	ssize_t	*coor;
 
 	map = NULL;
-	map = ft_strsdup(env->map.map_char, map);
+	map = ft_strsdup(map, env->map.map_char);
 	if (!map)
 		error(1478, "BAD MAP", env);
 	coor = find_coor(map, env);

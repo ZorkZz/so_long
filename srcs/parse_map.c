@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   parse_map.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: astachni@student.42lyon.fr <astachni>      +#+  +:+       +#+        */
+/*   By: astachni <astachni@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/15 17:35:33 by astachni@st       #+#    #+#             */
-/*   Updated: 2023/01/26 17:19:43 by astachni@st      ###   ########.fr       */
+/*   Updated: 2023/01/29 20:12:11 by astachni         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -75,7 +75,7 @@ char	**parse_map(t_game *env, char *str)
 	if (str)
 		strs_temp[i] = ft_strdup(str);
 	strs_temp[len + 1] = NULL;
-	return (ft_strsdup(env->map.map_char, strs_temp));
+	return (ft_strsfdup(env->map.map_char, strs_temp));
 }
 
 t_game	map_txt_to_char(int ac, char **av, t_game *env)

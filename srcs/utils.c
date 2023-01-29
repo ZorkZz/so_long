@@ -3,16 +3,17 @@
 /*                                                        :::      ::::::::   */
 /*   utils.c                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: astachni@student.42lyon.fr <astachni>      +#+  +:+       +#+        */
+/*   By: astachni <astachni@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/25 19:39:08 by astachni          #+#    #+#             */
-/*   Updated: 2023/01/28 17:47:10 by astachni@st      ###   ########.fr       */
+/*   Updated: 2023/01/29 20:12:55 by astachni         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../header/so_long.h"
 
-char	**ft_strsdup(char **map, char **str)
+//return map free
+char	**ft_strsfdup(char **map, char **str)
 {
 	size_t	len;
 	size_t	i;
@@ -30,6 +31,27 @@ char	**ft_strsdup(char **map, char **str)
 	}
 	map[i] = NULL;
 	free_map(str);
+	return (map);
+}
+
+//return map don't free
+char	**ft_strsdup(char **map, char **str)
+{
+	size_t	len;
+	size_t	i;
+
+	free_map(map);
+	len = ft_strslen(str);
+	map = malloc((len + 1) * sizeof(char *));
+	if (!map)
+		return (NULL);
+	i = 0;
+	while (map && str && str[i] != NULL && i < len)
+	{
+		map[i] = ft_strdup(str[i]);
+		i++;
+	}
+	map[i] = NULL;
 	return (map);
 }
 
