@@ -6,7 +6,7 @@
 /*   By: astachni <astachni@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/29 15:24:37 by astachni          #+#    #+#             */
-/*   Updated: 2023/01/27 22:11:45 by astachni         ###   ########.fr       */
+/*   Updated: 2023/01/29 16:42:18 by astachni         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,5 +33,6 @@ void			import_enemy(t_game *env);
 char			**ft_strsdup(char **map, char **str);
 void			map_verif(char **strs, t_game *env);
 void			is_finis(t_game *env);
+void			diffusion(char **map, ssize_t x, ssize_t y);
 
 #endif

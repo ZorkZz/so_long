@@ -2,7 +2,7 @@ NAME = so_long
 
 OBJS_DIR = objs/
 
-SRCS = main.c srcs/error.c  srcs/close_win.c srcs/event.c srcs/import_sprite.c srcs/perso_map_characteristics.c srcs/free_all.c srcs/read_map.c srcs/parse_map.c srcs/verify_moov_char.c srcs/enemy.c srcs/utils.c srcs/map_verif.c srcs/map_is_finishable.c
+SRCS = main.c srcs/error.c  srcs/close_win.c srcs/event.c srcs/import_sprite.c srcs/perso_map_characteristics.c srcs/free_all.c srcs/read_map.c srcs/parse_map.c srcs/verify_moov_char.c srcs/enemy.c srcs/utils.c srcs/map_verif.c srcs/map_is_finishable.c srcs/diffusion.c
 
 OBJS = $(SRCS:%.c=$(OBJS_DIR)%.o)
 
