@@ -6,7 +6,7 @@
 /*   By: astachni <astachni@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/15 17:35:33 by astachni@st       #+#    #+#             */
-/*   Updated: 2023/01/29 20:12:11 by astachni         ###   ########.fr       */
+/*   Updated: 2023/02/05 14:54:32 by astachni         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,9 +16,9 @@ ssize_t	verify_char_map1(t_game *env, char c, ssize_t *exit_number, \
 		ssize_t *perso_number)
 {
 	if (c == 'C')
-			env->item.nb_item += 1;
+		env->item.nb_item += 1;
 	else if (c == 'P')
-			perso_number += 1;
+		perso_number += 1;
 	else if (c == 'E')
 		*exit_number += 1;
 	else if (c != '0' && c != '1' && c != 'N' && c != '\n' && c != '\0')
