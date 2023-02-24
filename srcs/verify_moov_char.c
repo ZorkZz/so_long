@@ -6,7 +6,7 @@
 /*   By: astachni <astachni@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/15 22:55:46 by astachni@st       #+#    #+#             */
-/*   Updated: 2023/01/25 18:14:05 by astachni         ###   ########.fr       */
+/*   Updated: 2023/02/24 17:19:18 by astachni         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,7 +16,7 @@ t_game	*can_exit(t_game *env, char c)
 {
 	if (c == 'N')
 	{
-		ft_printf("\nTA PERDU GOURDE A JUS D'HOMME\n");
+		ft_printf("\nYou lost\n");
 		close_mlx(env);
 	}
 	if (c == 'C' || c == '0')
