@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   read_map.c                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: astachni <astachni@student.42lyon.fr>      +#+  +:+       +#+        */
+/*   By: astachni <astachni@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/12 17:07:11 by astachni          #+#    #+#             */
-/*   Updated: 2023/01/27 20:47:53 by astachni         ###   ########.fr       */
+/*   Updated: 2023/02/25 17:28:06 by astachni         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -39,18 +39,9 @@ t_game	*position(t_game *env, char c)
 
 t_game	*take_sprite(char c, t_game *env)
 {
-	if (c == '1')
-	{
-		if (env->map.path)
-			free(env->map.path);
-		env->map.path = ft_strdup("./sprites/obstacle0.xpm");
-	}
-	else if (c == '0' || c == 'P' || c == 'E' || c == 'C' || c == 'N')
-	{
-		if (env->map.path)
-			free(env->map.path);
-		env->map.path = ft_strdup("./sprites/grass0.xpm");
-	}
+	if (c == '0' || c == 'P' || c == 'E' || c == 'C' || c == 'N')
+		if (!env->map.path)
+			env->map.path = ft_strdup("./sprites/grass0.xpm");
 	return (env);
 }
 

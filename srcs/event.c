@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   event.c                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: astachni@student.42lyon.fr <astachni>      +#+  +:+       +#+        */
+/*   By: astachni <astachni@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/30 14:39:14 by astachni          #+#    #+#             */
-/*   Updated: 2023/01/26 19:49:04 by astachni@st      ###   ########.fr       */
+/*   Updated: 2023/02/25 17:20:48 by astachni         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,9 +19,6 @@ t_game	*w_pressed(t_game *env, int moov)
 	{
 		env->map.position[1] = env->perso.position[1];
 		env->map.position[0] = env->perso.position[0];
-		if (env->map.path)
-			free(env->map.path);
-		env->map.path = ft_strdup("./sprites/grass0.xpm");
 		import_map(env, 0);
 		env->perso.position[1] -= 64;
 		import_sprite_charactere(env);
@@ -40,9 +37,6 @@ t_game	*s_pressed(t_game *env, int moov)
 	{
 		env->map.position[1] = env->perso.position[1];
 		env->map.position[0] = env->perso.position[0];
-		if (env->map.path)
-			free(env->map.path);
-		env->map.path = ft_strdup("./sprites/grass0.xpm");
 		import_map(env, 0);
 		env->perso.position[1] += 64;
 		import_sprite_charactere(env);
@@ -61,9 +55,6 @@ t_game	*a_pressed(t_game *env, int moov)
 	{	
 		env->map.position[1] = env->perso.position[1];
 		env->map.position[0] = env->perso.position[0];
-		if (env->map.path)
-			free(env->map.path);
-		env->map.path = ft_strdup("./sprites/grass0.xpm");
 		import_map(env, 0);
 		env->perso.position[0] -= 64;
 		import_sprite_charactere(env);
@@ -82,9 +73,6 @@ t_game	*d_pressed(t_game *env, int moov)
 	{	
 		env->map.position[1] = env->perso.position[1];
 		env->map.position[0] = env->perso.position[0];
-		if (env->map.path)
-			free(env->map.path);
-		env->map.path = ft_strdup("./sprites/grass0.xpm");
 		import_map(env, 0);
 		env->perso.position[0] += 64;
 		import_sprite_charactere(env);

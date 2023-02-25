@@ -6,7 +6,7 @@
 /*   By: astachni <astachni@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/29 16:37:27 by astachni          #+#    #+#             */
-/*   Updated: 2023/02/25 16:41:03 by astachni         ###   ########.fr       */
+/*   Updated: 2023/02/25 17:12:48 by astachni         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -42,7 +42,7 @@ ssize_t	*find_coor(char **map, t_game *env)
 
 	tab = malloc(sizeof(ssize_t) * 2);
 	if (!tab)
-		error (875, "MALLOC ERROR", env);
+		error ("MALLOC ERROR", env);
 	tab[0] = 0;
 	tab[1] = 0;
 	while (map && map[tab[0]])
@@ -73,7 +73,7 @@ void	map_is_ok(char **map, t_game *env)
 			if (map[x][y] == 'C' || map[x][y] == 'E')
 			{
 				free_map(map);
-				error(485, "BAD MAP\n", env);
+				error("BAD MAP\n", env);
 			}
 			y++;
 		}
@@ -89,7 +89,7 @@ void	is_finish(t_game *env)
 	map = NULL;
 	map = ft_strsdup(map, env->map.map_char);
 	if (!map)
-		error(1478, "BAD MAP", env);
+		error("BAD MAP", env);
 	coor = find_coor(map, env);
 	diffusion (map, coor[0], coor[1]);
 	map_is_ok(map, env);

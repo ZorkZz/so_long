@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   enemy.c                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: astachni@student.42lyon.fr <astachni>      +#+  +:+       +#+        */
+/*   By: astachni <astachni@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/20 20:24:14 by astachni@st       #+#    #+#             */
-/*   Updated: 2023/01/26 19:51:56 by astachni@st      ###   ########.fr       */
+/*   Updated: 2023/02/25 17:12:10 by astachni         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,11 +15,11 @@
 void	import_enemy(t_game *env)
 {
 	if (!env->mlx.init || !env->mlx.win)
-		error(0, "no mlx var", env);
+		error("no mlx var", env);
 	if (!env->enemy.path)
-		error(1, "no path", env);
+		error("no path", env);
 	if (!env->enemy.size)
-		error(2, "no size", env);
+		error("no size", env);
 	mlx_put_image_to_window(env->mlx.init, env->mlx.win, env->enemy.img_ptr,
 		env->enemy.position[0], env->enemy.position[1]);
 }

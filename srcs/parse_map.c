@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   parse_map.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: astachni <astachni@student.42lyon.fr>      +#+  +:+       +#+        */
+/*   By: astachni <astachni@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/15 17:35:33 by astachni@st       #+#    #+#             */
-/*   Updated: 2023/02/05 14:54:32 by astachni         ###   ########.fr       */
+/*   Updated: 2023/02/25 18:32:10 by astachni         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,7 +18,7 @@ ssize_t	verify_char_map1(t_game *env, char c, ssize_t *exit_number, \
 	if (c == 'C')
 		env->item.nb_item += 1;
 	else if (c == 'P')
-		perso_number += 1;
+		*perso_number += 1;
 	else if (c == 'E')
 		*exit_number += 1;
 	else if (c != '0' && c != '1' && c != 'N' && c != '\n' && c != '\0')
@@ -45,11 +45,12 @@ ssize_t	verify_char_map(t_game *env)
 			if (verify_char_map1(env, env->map.map_char[i][j], \
 				&exit_number, &perso_number) == -1)
 				return (-1);
+			ft_printf("%d", perso_number);
 			j++;
 		}
 		i++;
 	}
-	if (perso_number != 1 && exit_number != 1 && env->item.nb_item < 1)
+	if (perso_number != 1 || exit_number != 1 || env->item.nb_item < 1)
 		return (-1);
 	return (env->item.nb_item);
 }
@@ -102,6 +103,6 @@ t_game	map_txt_to_char(int ac, char **av, t_game *env)
 	env->mlx.map_size[1] = (ft_strlen(env->map.map_char[0]) - 2) * 64;
 	close(fd);
 	if (verify_char_map(env) == -1)
-		error(78, "ERROR\n BAD MAP", env);
+		error("ERROR\n BAD MAP", env);
 	return (*env);
 }

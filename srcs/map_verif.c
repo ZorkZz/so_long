@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   map_verif.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: astachni <astachni@student.42lyon.fr>      +#+  +:+       +#+        */
+/*   By: astachni <astachni@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/26 21:21:49 by astachni@st       #+#    #+#             */
-/*   Updated: 2023/01/29 20:11:07 by astachni         ###   ########.fr       */
+/*   Updated: 2023/02/25 17:12:29 by astachni         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,9 +25,9 @@ ssize_t	ft_strnlen(char *str)
 void	check_map(char **map, t_game *env)
 {
 	if (ft_strslen(map) < 3)
-		error(8475, "ERROR\n BAD MAP\n", env);
+		error("ERROR\n BAD MAP\n", env);
 	if (ft_strlen(map[0]) < 4)
-		error(8475, "ERROR\n BAD MAP\n", env);
+		error("ERROR\n BAD MAP\n", env);
 }
 
 void	verif_wall(char	**strs, t_game *env)
@@ -39,14 +39,14 @@ void	verif_wall(char	**strs, t_game *env)
 	while (strs && strs[i])
 	{
 		if (strs[i][0] != '1' || strs[i][ft_strlen(strs[i]) - 3] != '1')
-			error(8475, "ERROR\n BAD MAP\n", env);
+			error("ERROR\n BAD MAP\n", env);
 		i++;
 	}
 	i = 0;
 	while (strs && strs[0] && strs[0][i] && strs[0][i] != '\n')
 	{
 		if (strs[0][i] != '1')
-			error(8475, "ERROR\n BAD MAP\n", env);
+			error("ERROR\n BAD MAP\n", env);
 		i++;
 	}
 	i = 0;
@@ -54,7 +54,7 @@ void	verif_wall(char	**strs, t_game *env)
 	while (strs && strs[len] && strs[len][i] && strs[len][i] != '\n')
 	{
 		if (strs[len][i] != '1')
-			error(8475, "ERROR\n BAD MAP\n", env);
+			error("ERROR\n BAD MAP\n", env);
 		i++;
 	}
 }
@@ -73,7 +73,7 @@ void	map_verif(char **strs, t_game *env)
 		if (i != 0)
 		{
 			if (backup_len != len)
-				error(8475, "ERROR\n BAD MAP\n", env);
+				error("ERROR\n BAD MAP\n", env);
 		}
 		backup_len = len;
 		i++;

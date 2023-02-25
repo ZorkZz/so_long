@@ -3,22 +3,22 @@
 /*                                                        :::      ::::::::   */
 /*   proto.h                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: astachni <astachni@student.42lyon.fr>      +#+  +:+       +#+        */
+/*   By: astachni <astachni@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/29 15:24:37 by astachni          #+#    #+#             */
-/*   Updated: 2023/01/29 20:14:33 by astachni         ###   ########.fr       */
+/*   Updated: 2023/02/25 17:10:30 by astachni         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #ifndef PROTO_H
 # define PROTO_H
 
-int		error(int code, char *message, t_game *env);
+int		error(char *message, t_game *env);
 int		close_mlx(t_game *env);
 int		event(int key, t_game *env);
 void	import_sprite_charactere(t_game *env);
 void	import_map(t_game *env, int choice);
-void	*free_all(int value, t_game *env);
+void	free_all(t_game *env);
 t_game	read_map(t_game *env);
 char	**parse_map(t_game *env, char *strs);
 t_game	map_txt_to_char(int ac, char **av, t_game *env);
