@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   free_all.c                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: astachni <astachni@student.42lyon.fr>      +#+  +:+       +#+        */
+/*   By: astachni <astachni@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/31 15:01:20 by astachni          #+#    #+#             */
-/*   Updated: 2023/02/24 17:25:41 by astachni         ###   ########.fr       */
+/*   Updated: 2023/02/25 16:36:31 by astachni         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -47,12 +47,6 @@ void	other_free(t_game *env)
 		free(env->exit.path);
 	if (env->item.path)
 		free(env->item.path);
-	if (env->enemy.img_ptr)
-		free(env->enemy.img_ptr);
-	if (env->exit.img_ptr)
-		free(env->exit.img_ptr);
-	if (env->item.itm_ptr)
-		free(env->item.itm_ptr);
 }
 
 void	*free_all(int value, t_game *env)
@@ -78,7 +72,5 @@ void	*free_all(int value, t_game *env)
 		return (NULL);
 	}
 	other_free(env);
-	return (free(env->perso.path), \
-		free(env->perso.img_ptr), \
-		free(env->map.img_ptr), free(env->map.path), NULL);
+	return (free(env->perso.path), free(env->map.path), NULL);
 }

@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   diffusion.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: astachni <astachni@student.42lyon.fr>      +#+  +:+       +#+        */
+/*   By: astachni <astachni@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/29 16:37:27 by astachni          #+#    #+#             */
-/*   Updated: 2023/01/29 20:20:25 by astachni         ###   ########.fr       */
+/*   Updated: 2023/02/25 16:41:03 by astachni         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -93,5 +93,6 @@ void	is_finish(t_game *env)
 	coor = find_coor(map, env);
 	diffusion (map, coor[0], coor[1]);
 	map_is_ok(map, env);
+	free(coor);
 	free_map(map);
 }
