@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   error.c                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: astachni <astachni@student.42.fr>          +#+  +:+       +#+        */
+/*   By: astachni <astachni@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/28 22:32:20 by astachni          #+#    #+#             */
-/*   Updated: 2023/02/25 18:35:17 by astachni         ###   ########.fr       */
+/*   Updated: 2023/02/26 17:26:09 by astachni         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -37,5 +37,14 @@ int	error(char *message, t_game *env)
 	img_destroy(env);
 	ft_putstr_fd(message, 2);
 	close_mlx(env);
+	exit (1);
+	return (0);
+}
+
+int	error_before_init(char *message, t_game *env)
+{
+	free_map(env->map.map_char);
+	ft_putstr_fd(message, 2);
+	exit (0);
 	return (0);
 }

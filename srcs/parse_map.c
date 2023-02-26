@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   parse_map.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: astachni <astachni@student.42.fr>          +#+  +:+       +#+        */
+/*   By: astachni <astachni@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/15 17:35:33 by astachni@st       #+#    #+#             */
-/*   Updated: 2023/02/25 18:32:10 by astachni         ###   ########.fr       */
+/*   Updated: 2023/02/26 17:25:47 by astachni         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -45,7 +45,6 @@ ssize_t	verify_char_map(t_game *env)
 			if (verify_char_map1(env, env->map.map_char[i][j], \
 				&exit_number, &perso_number) == -1)
 				return (-1);
-			ft_printf("%d", perso_number);
 			j++;
 		}
 		i++;
@@ -103,6 +102,6 @@ t_game	map_txt_to_char(int ac, char **av, t_game *env)
 	env->mlx.map_size[1] = (ft_strlen(env->map.map_char[0]) - 2) * 64;
 	close(fd);
 	if (verify_char_map(env) == -1)
-		error("ERROR\n BAD MAP", env);
+		error_before_init("ERROR\n BAD MAP", env);
 	return (*env);
 }
