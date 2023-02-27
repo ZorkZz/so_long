@@ -10,7 +10,7 @@ LIBS = libs/ft_printf/libftprintf.a libs/get_next_line/get_next_line.a libs/libf
 
 CC = cc
 
-CFLAGS = -Wall -Wextra -Werror -g3 -fsanitize=address
+CFLAGS = -Wall -Wextra -Werror -g3
 
 RM = rm -f
 
