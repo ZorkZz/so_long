@@ -6,7 +6,7 @@
 /*   By: astachni <astachni@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/29 16:37:27 by astachni          #+#    #+#             */
-/*   Updated: 2023/02/25 17:12:48 by astachni         ###   ########.fr       */
+/*   Updated: 2023/02/27 17:17:40 by astachni         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -42,7 +42,7 @@ ssize_t	*find_coor(char **map, t_game *env)
 
 	tab = malloc(sizeof(ssize_t) * 2);
 	if (!tab)
-		error ("MALLOC ERROR", env);
+		error_map ("MALLOC ERROR", env);
 	tab[0] = 0;
 	tab[1] = 0;
 	while (map && map[tab[0]])
@@ -59,7 +59,7 @@ ssize_t	*find_coor(char **map, t_game *env)
 	return (tab);
 }
 
-void	map_is_ok(char **map, t_game *env)
+void	map_is_ok(char **map, t_game *env, ssize_t *coor)
 {
 	ssize_t	x;
 	ssize_t	y;
@@ -73,7 +73,8 @@ void	map_is_ok(char **map, t_game *env)
 			if (map[x][y] == 'C' || map[x][y] == 'E')
 			{
 				free_map(map);
-				error("BAD MAP\n", env);
+				free(coor);
+				error_map("BAD MAP\n", env);
 			}
 			y++;
 		}
@@ -89,10 +90,10 @@ void	is_finish(t_game *env)
 	map = NULL;
 	map = ft_strsdup(map, env->map.map_char);
 	if (!map)
-		error("BAD MAP", env);
+		error_map("BAD MAP", env);
 	coor = find_coor(map, env);
 	diffusion (map, coor[0], coor[1]);
-	map_is_ok(map, env);
+	map_is_ok(map, env, coor);
 	free(coor);
 	free_map(map);
 }

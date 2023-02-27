@@ -6,7 +6,7 @@
 /*   By: astachni <astachni@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/26 21:21:49 by astachni@st       #+#    #+#             */
-/*   Updated: 2023/02/27 14:50:49 by astachni         ###   ########.fr       */
+/*   Updated: 2023/02/27 17:11:46 by astachni         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,9 +25,9 @@ ssize_t	ft_strnlen(char *str)
 void	check_map(char **map, t_game *env)
 {
 	if (ft_strslen(map) < 3)
-		error("ERROR\n BAD MAP\n", env);
+		error_map("ERROR\n BAD MAP\n", env);
 	if (ft_strlen(map[0]) < 4)
-		error("ERROR\n BAD MAP\n", env);
+		error_map("ERROR\n BAD MAP\n", env);
 }
 
 void	verif_wall(char	**strs, t_game *env)
@@ -73,7 +73,7 @@ void	map_verif(char **strs, t_game *env)
 		if (i != 0)
 		{
 			if (backup_len != len)
-				error("ERROR\n BAD MAP\n", env);
+				error_map("ERROR\n BAD MAP\n", env);
 		}
 		backup_len = len;
 		i++;

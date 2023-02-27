@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   parse_map.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: astachni <astachni@student.42lyon.fr>      +#+  +:+       +#+        */
+/*   By: astachni <astachni@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/15 17:35:33 by astachni@st       #+#    #+#             */
-/*   Updated: 2023/02/26 17:25:47 by astachni         ###   ########.fr       */
+/*   Updated: 2023/02/27 17:26:14 by astachni         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -98,9 +98,11 @@ t_game	map_txt_to_char(int ac, char **av, t_game *env)
 		str = get_next_line(fd);
 		i++;
 	}
+	close(fd);
+	if (!env->map.map_char)
+		error_before_init("ERROR\n BAD MAP", env);
 	env->mlx.map_size[0] = ft_strslen(env->map.map_char) * 64;
 	env->mlx.map_size[1] = (ft_strlen(env->map.map_char[0]) - 2) * 64;
-	close(fd);
 	if (verify_char_map(env) == -1)
 		error_before_init("ERROR\n BAD MAP", env);
 	return (*env);
