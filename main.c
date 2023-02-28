@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   main.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: astachni <astachni@student.42lyon.fr>      +#+  +:+       +#+        */
+/*   By: astachni <astachni@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/16 17:02:13 by astachni          #+#    #+#             */
-/*   Updated: 2023/02/26 17:31:01 by astachni         ###   ########.fr       */
+/*   Updated: 2023/02/28 14:28:55 by astachni         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,7 +18,7 @@ int	main(int ac, char **av)
 
 	env = map_txt_to_char(ac, av, &env);
 	if (env.map.map_char == NULL)
-		return (error_before_init("no pointer for image", &env));
+		return (error_before_init("no pointer or image", &env));
 	env.mlx.init = mlx_init();
 	if (env.mlx.init == NULL)
 		return (-1);
