@@ -6,7 +6,7 @@
 /*   By: astachni <astachni@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/30 14:39:14 by astachni          #+#    #+#             */
-/*   Updated: 2023/02/25 17:20:48 by astachni         ###   ########.fr       */
+/*   Updated: 2023/03/03 16:40:28 by astachni         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -97,9 +97,9 @@ int	event(int key, t_game *env)
 	else if (key == ESC)
 	{
 		close_mlx(env);
-		ft_printf("%s\n", "fermeture de la fenetre");
+		ft_printf("%s\n", "close window");
 	}
 	else
-		ft_printf("%s\n", "cle non reconnu");
+		ft_printf("%s\n", "invalid key");
 	return (key);
 }
