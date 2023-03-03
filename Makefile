@@ -38,22 +38,32 @@ PATH_MLX = mlx
 
 endif
 
-$(OBJS_DIR)%.o: %.c $(HEADER) Makefile $(LIBFT_SRCS) $(FT_PRINTF_SRCS) $(GNL_SRCS)
+all: libft mlx gnl printf $(NAME)
+
+libft:
+		$(MAKE) -C libs/libft bonus
+
+mlx:
+		$(MAKE) -C $(PATH_MLX)
+
+gnl:
+		$(MAKE) -C libs/get_next_line
+
+printf:
+		$(MAKE) -C libs/ft_printf
+
+$(OBJS_DIR)%.o: %.c $(HEADER) Makefile
 	$(CC) $(CFLAGS) $(INCLUDE_FLAGS) -c $< -o $@
 
-$(NAME):	$(OBJS)
-	make bonus -C libs/libft
-	make -C libs/ft_printf
-	make -C libs/get_next_line
-	make -C $(PATH_MLX)
-	$(CC) $(CFLAGS) $(OBJS) $(LIBS) $(MLX_FLAGS) -o $(NAME)
-	@norminette main.c srcs/*.c header/*.h
+$(NAME):	$(OBJS) $(LIBS) $(HEADER)
+			$(CC) $(CFLAGS) $(OBJS) $(LIBS) $(MLX_FLAGS) -o $(NAME)
+			@norminette main.c srcs/*.c header/*.h
 
 clean:
-	make clean -C libs/libft
-	make clean -C libs/ft_printf
-	make clean -C $(PATH_MLX)
-	make clean -C libs/get_next_line
+	@make clean -C libs/libft
+	@make clean -C libs/ft_printf
+	@make clean -C $(PATH_MLX)
+	@make clean -C libs/get_next_line
 	$(RM) $(OBJS)
 
 fclean: clean
@@ -63,9 +73,8 @@ fclean: clean
 	$(RM) $(NAME)
 
 
-all: $(NAME)
 
 re: fclean
 	$(MAKE) all
 
-.PHONY:	all clean fclean re
+.PHONY:	all clean fclean re libft mlx gnl printf
