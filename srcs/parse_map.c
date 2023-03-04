@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   parse_map.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: astachni <astachni@student.42.fr>          +#+  +:+       +#+        */
+/*   By: astachni <astachni@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/15 17:35:33 by astachni@st       #+#    #+#             */
-/*   Updated: 2023/02/27 18:07:48 by astachni         ###   ########.fr       */
+/*   Updated: 2023/03/04 18:05:26 by astachni         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -64,6 +64,8 @@ char	**parse_map(t_game *env, char *str)
 		return (NULL);
 	len = ft_strslen(env->map.map_char);
 	strs_temp = malloc((len + 2) * sizeof(char *));
+	if (!strs_temp)
+		error_before_init("malloc error\n", env);
 	if (!strs_temp)
 		return (NULL);
 	i = 0;

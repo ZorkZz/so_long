@@ -1,26 +1,34 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   close_win.c                                        :+:      :+:    :+:   */
+/*   all_null.c                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: astachni <astachni@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/12/29 18:12:13 by astachni          #+#    #+#             */
-/*   Updated: 2023/03/04 17:10:39 by astachni         ###   ########.fr       */
+/*   Created: 2023/03/04 16:52:07 by astachni          #+#    #+#             */
+/*   Updated: 2023/03/04 17:07:30 by astachni         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../header/so_long.h"
 
-int	close_mlx(t_game *env)
+t_game	all_null(t_game env)
 {
-	if (env->map.map_char)
-		free_map(env->map.map_char);
-	free_all(env);
-	if (env->mlx.win != NULL)
-		mlx_destroy_window(env->mlx.init, env->mlx.win);
-	mlx_destroy_display(env->mlx.init);
-	free(env->mlx.init);
-	exit(0);
-	return (0);
+	env.mlx.init_sprite = 0;
+	env.enemy.img_ptr = NULL;
+	env.enemy.path = NULL;
+	env.exit.img_ptr = NULL;
+	env.exit.path = NULL;
+	env.item.itm_ptr = NULL;
+	env.item.path = NULL;
+	env.map.img_ptr01 = NULL;
+	env.map.img_ptr = NULL;
+	env.map.path01 = NULL;
+	env.map.path = NULL;
+	env.map.map_char = NULL;
+	env.perso.path = NULL;
+	env.perso.img_ptr = NULL;
+	env.mlx.init = NULL;
+	env.mlx.win = NULL;
+	return (env);
 }

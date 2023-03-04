@@ -2,7 +2,7 @@ NAME = so_long
 
 OBJS_DIR = objs/
 
-SRCS = main.c srcs/error.c  srcs/close_win.c srcs/event.c srcs/import_sprite.c srcs/perso_map_characteristics.c srcs/free_all.c srcs/read_map.c srcs/parse_map.c srcs/verify_moov_char.c srcs/enemy.c srcs/utils.c srcs/map_verif.c srcs/diffusion.c
+SRCS = main.c srcs/error.c  srcs/close_win.c srcs/event.c srcs/import_sprite.c srcs/perso_map_characteristics.c srcs/free_all.c srcs/read_map.c srcs/parse_map.c srcs/verify_moov_char.c srcs/enemy.c srcs/utils.c srcs/map_verif.c srcs/diffusion.c srcs/all_null.c
 
 LIBFT_SRCS = libs/libft/ft_isalpha.c libs/libft/ft_isdigit.c libs/libft/ft_isalnum.c libs/libft/ft_isascii.c libs/libft/ft_isprint.c libs/libft/ft_strlen.c libs/libft/ft_memset.c libs/libft/ft_bzero.c libs/libft/ft_memcpy.c libs/libft/ft_memmove.c libs/libft/ft_strlcpy.c libs/libft/ft_strlcat.c libs/libft/ft_toupper.c libs/libft/ft_tolower.c libs/libft/ft_strchr.c libs/libft/ft_strrchr.c libs/libft/ft_strncmp.c libs/libft/ft_memchr.c libs/libft/ft_memcmp.c libs/libft/ft_strnstr.c libs/libft/ft_atoi.c libs/libft/ft_calloc.c libs/libft/ft_strdup.c libs/libft/ft_substr.c libs/libft/ft_strjoin.c libs/libft/ft_strtrim.c libs/libft/ft_split.c libs/libft/ft_itoa.c libs/libft/ft_strmapi.c libs/libft/ft_striteri.c libs/libft/ft_putchar_fd.c  libs/libft/ft_putstr_fd.c libs/libft/ft_putendl_fd.c libs/libft/ft_putnbr_fd.c libs/libft/ft_strjoin.c libs/libft/libft.h libs/libft/Makefile
 

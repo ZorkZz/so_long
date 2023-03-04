@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   proto.h                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: astachni <astachni@student.42.fr>          +#+  +:+       +#+        */
+/*   By: astachni <astachni@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/29 15:24:37 by astachni          #+#    #+#             */
-/*   Updated: 2023/02/27 14:51:46 by astachni         ###   ########.fr       */
+/*   Updated: 2023/03/04 16:53:03 by astachni         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,5 +36,6 @@ void	map_verif(char **strs, t_game *env);
 void	is_finish(t_game *env);
 int		error_before_init(char *message, t_game *env);
 int		error_map(char *message, t_game *env);
+t_game	all_null(t_game env);
 
 #endif

@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   main.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: astachni <astachni@student.42.fr>          +#+  +:+       +#+        */
+/*   By: astachni <astachni@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/16 17:02:13 by astachni          #+#    #+#             */
-/*   Updated: 2023/02/28 14:28:55 by astachni         ###   ########.fr       */
+/*   Updated: 2023/03/04 17:35:43 by astachni         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,16 +16,17 @@ int	main(int ac, char **av)
 {
 	t_game	env;
 
+	env = all_null(env);
 	env = map_txt_to_char(ac, av, &env);
 	if (env.map.map_char == NULL)
 		return (error_before_init("no pointer or image", &env));
 	env.mlx.init = mlx_init();
 	if (env.mlx.init == NULL)
-		return (-1);
+		return (error_before_init("error init", &env));
 	env.mlx.win = mlx_new_window(env.mlx.init, env.mlx.map_size[1],
 			env.mlx.map_size[0], "so_long");
 	if (env.mlx.win == NULL)
-		return (-1);
+		return (error("error win", &env));
 	env = add_charac(&env);
 	map_verif(env.map.map_char, &env);
 	env = read_map(&env);
