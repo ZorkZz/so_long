@@ -6,7 +6,7 @@
 /*   By: astachni <astachni@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/15 17:35:33 by astachni@st       #+#    #+#             */
-/*   Updated: 2023/03/04 18:05:26 by astachni         ###   ########.fr       */
+/*   Updated: 2023/03/04 18:31:24 by astachni         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -80,24 +80,42 @@ char	**parse_map(t_game *env, char *str)
 	return (ft_strsfdup(env->map.map_char, strs_temp));
 }
 
+void	verif_malloc(char **strs, int size, int fd, t_game *env)
+{
+	int	i;
+
+	close(fd);
+	i = 0;
+	(void)env;
+	while (strs[i])
+		i++;
+	if (i != size)
+	{
+		free_map(strs);
+		exit(1);
+	}
+}
+
 t_game	map_txt_to_char(int ac, char **av, t_game *env)
 {
 	int		fd;
 	char	*str;
+	int		i;
 
-	env->map.map_char = NULL;
 	fd = open_fd(ac, av);
 	if (fd < 0)
 		return (*env);
 	str = get_next_line(fd);
+	i = 0;
 	while (str)
 	{
 		env->map.map_char = parse_map(env, str);
 		if (str)
 			free(str);
 		str = get_next_line(fd);
+		i++;
 	}
-	close(fd);
+	verif_malloc(env->map.map_char, i, fd, env);
 	if (!env->map.map_char || !env->map.map_char[0])
 		error_before_init("ERROR\n BAD MAP", env);
 	env->mlx.map_size[0] = ft_strslen(env->map.map_char) * 64;
