@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   diffusion.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: astachni <astachni@student.42lyon.fr>      +#+  +:+       +#+        */
+/*   By: astachni <astachni@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/29 16:37:27 by astachni          #+#    #+#             */
-/*   Updated: 2023/03/04 18:01:43 by astachni         ###   ########.fr       */
+/*   Updated: 2023/03/22 16:54:41 by astachni         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -42,7 +42,10 @@ ssize_t	*find_coor(char **map, t_game *env)
 
 	tab = malloc(sizeof(ssize_t) * 2);
 	if (!tab)
+	{
+		free_map(map);
 		error_map ("MALLOC ERROR", env);
+	}
 	tab[0] = 0;
 	tab[1] = 0;
 	while (map && map[tab[0]])
