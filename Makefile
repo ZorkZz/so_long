@@ -38,10 +38,12 @@ PATH_MLX = mlx
 
 endif
 
-all: libft mlx gnl printf $(NAME)
+all: mlx gnl printf $(NAME)
 
-libft:
-		$(MAKE) -C libs/libft bonus
+$(LIBS):	FORCE
+	$(MAKE) -C libs/libft all
+
+FORCE:
 
 mlx:
 		$(MAKE) -C $(PATH_MLX)

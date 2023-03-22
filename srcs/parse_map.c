@@ -6,7 +6,7 @@
 /*   By: astachni <astachni@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/15 17:35:33 by astachni@st       #+#    #+#             */
-/*   Updated: 2023/03/04 18:31:24 by astachni         ###   ########.fr       */
+/*   Updated: 2023/03/06 19:16:54 by astachni         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -92,6 +92,7 @@ void	verif_malloc(char **strs, int size, int fd, t_game *env)
 	if (i != size)
 	{
 		free_map(strs);
+		ft_putendl_fd("ERROR\n", 2);
 		exit(1);
 	}
 }
