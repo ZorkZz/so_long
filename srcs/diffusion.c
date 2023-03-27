@@ -6,7 +6,7 @@
 /*   By: astachni <astachni@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/29 16:37:27 by astachni          #+#    #+#             */
-/*   Updated: 2023/03/22 16:54:41 by astachni         ###   ########.fr       */
+/*   Updated: 2023/03/27 15:45:03 by astachni         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,22 +14,22 @@
 
 void	diffusion(char **map, ssize_t x, ssize_t y)
 {
-	if (map[x + 1][y] == '0' || map[x + 1][y] == 'C' || map[x + 1][y] == 'E')
+	if (map[x + 1][y] == '0' || map[x + 1][y] == 'C')
 	{
 		map[x + 1][y] = '*';
 		diffusion(map, x + 1, y);
 	}
-	if (map[x - 1][y] == '0' || map[x - 1][y] == 'C' || map[x - 1][y] == 'E')
+	if (map[x - 1][y] == '0' || map[x - 1][y] == 'C')
 	{
 		map[x - 1][y] = '*';
 		diffusion(map, x - 1, y);
 	}
-	if (map[x][y + 1] == '0' || map[x][y + 1] == 'C' || map[x][y + 1] == 'E')
+	if (map[x][y + 1] == '0' || map[x][y + 1] == 'C')
 	{
 		map[x][y + 1] = '*';
 		diffusion(map, x, y + 1);
 	}
-	if (map[x][y - 1] == '0' || map[x][y - 1] == 'C' || map[x][y - 1] == 'E')
+	if (map[x][y - 1] == '0' || map[x][y - 1] == 'C')
 	{
 		map[x][y - 1] = '*';
 		diffusion(map, x, y - 1);
@@ -73,7 +73,9 @@ void	map_is_ok(char **map, t_game *env, ssize_t *coor)
 		y = 0;
 		while (map[x] && map[x][y])
 		{
-			if (map[x][y] == 'C' || map[x][y] == 'E')
+			if (map[x][y] == 'C' || (map[x][y] == 'E' && map[x + 1][y] != '*' &&
+				map[x - 1][y] != '*' && map[x][y + 1] != '*' &&
+					map[x][y - 1] != '*'))
 			{
 				free_map(map);
 				free(coor);
