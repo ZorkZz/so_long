@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   parse_map.c                                        :+:      :+:    :+:   */
+/*   parse_map_bonus.c                                  :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: astachni <astachni@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/01/15 17:35:33 by astachni@st       #+#    #+#             */
-/*   Updated: 2023/03/23 16:36:46 by astachni         ###   ########.fr       */
+/*   Created: 2023/03/23 15:35:19 by astachni          #+#    #+#             */
+/*   Updated: 2023/03/23 16:26:38 by astachni         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,7 +21,7 @@ ssize_t	verify_char_map1(t_game *env, char c, ssize_t *exit_number, \
 		*perso_number += 1;
 	else if (c == 'E')
 		*exit_number += 1;
-	else if (c != '0' && c != '1' && c != '\n' && c != '\0')
+	else if (c != '0' && c != '1' && c != 'N' && c != '\n' && c != '\0')
 		return (-1);
 	return (0);
 }
